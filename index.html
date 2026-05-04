@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventOS — Operating System for Events</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --accent: #003366; --text: #111; --muted: #666; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--text); background: #fff; line-height: 1.6; padding: 0 20px; }
+        
+        .container { max-width: 800px; margin: 0 auto; padding: 80px 0; }
+        
+        header { text-align: center; margin-bottom: 100px; }
+        h1 { font-size: 3.5rem; font-weight: 800; letter-spacing: -2px; margin-bottom: 20px; }
+        .sub { font-size: 1.25rem; color: var(--muted); max-width: 600px; margin: 0 auto 40px; }
+        
+        .cta { display: inline-block; background: var(--accent); color: white; padding: 18px 36px; border-radius: 8px; 
+               text-decoration: none; font-weight: 600; transition: transform 0.2s; }
+        .cta:hover { transform: translateY(-2px); opacity: 0.9; }
+
+        section { padding: 60px 0; border-top: 1px solid #eee; }
+        .label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin-bottom: 20px; display: block; }
+        .big-text { font-size: 1.75rem; font-weight: 400; letter-spacing: -0.5px; }
+
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 40px; }
+        ul { list-style: none; }
+        li { margin-bottom: 15px; display: flex; align-items: center; font-size: 1.1rem; }
+        li::before { content: "→"; color: var(--accent); margin-right: 15px; font-weight: bold; }
+
+        .founder { display: flex; align-items: center; gap: 20px; }
+        .founder img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; background: #f4f4f4; border: 4px solid #f4f4f4; }
+        .founder h3 { font-size: 1.2rem; margin-bottom: 4px; }
+        .founder p { font-size: 0.95rem; color: var(--muted); }
+        .founder a { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+
+        footer { text-align: center; padding: 100px 0 40px; color: var(--muted); font-size: 0.9rem; border-top: 1px solid #eee; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .grid { grid-template-columns: 1fr; gap: 40px; }
+            .big-text { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>EventOS</h1>
+            <p class="sub">Operating system for the events industry. Run your event business with structured data, automation, and AI-ready workflows.</p>
+            <a href="https://tally.so/r/4412AO" target="_blank" class="cta">Run a live demo</a>
+        </header>
+
+        <section>
+            <span class="label">Problem</span>
+            <p class="big-text">Event companies run multimillion-dollar operations on WhatsApp, spreadsheets, and manual workflows.</p>
+        </section>
+
+        <section>
+            <span class="label">Solution</span>
+            <p class="big-text">EventOS structures data, automates workflows, and helps event companies run sales, operations, and execution from a single system.</p>
+        </section>
+
+        <section class="grid">
+            <div>
+                <span class="label">What works today</span>
+                <ul>
+                    <li>Lead capture and CRM</li>
+                    <li>Instant quote generation</li>
+                    <li>Client organization</li>
+                    <li>Operational tracking</li>
+                </ul>
+            </div>
+            <div>
+                <span class="label">Founder</span>
+                <div class="founder">
+                    <img src="https://media.licdn.com/dms/image/v2/D4E03AQG8_L-mK3Fm3w/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1715053648342?e=1746662400&v=beta&t=7l3uR2Ea7G-v0R8_A10iA5844y9118e7e7e7e7e7e7e" alt="Javier Bambaren D">
+                    <div>
+                        <h3>Javier Bambaren D</h3>
+                        <p>jbambaren@realitynear.org</p>
+                        <a href="https://www.linkedin.com/in/javier-bambaren-dabdoub/" target="_blank">LinkedIn Profile</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Built by an event operator with 20+ years in the industry</p>
+            <p>Copyright &copy; 2026 EventOS. All rights reserved.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
