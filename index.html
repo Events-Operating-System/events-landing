@@ -1,645 +1,562 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JD9G00JWBS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-JD9G00JWBS');
-</script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JD9G00JWBS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JD9G00JWBS');
+  </script>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EventOS — AI-Native Event Operating System</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --blue: #063B73;
-      --blue-dark: #042B55;
-      --text: #111827;
-      --muted: #5F6B7A;
-      --soft: #F5F8FC;
-      --border: #E6EAF0;
-      --card: #FFFFFF;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "Inter", sans-serif;
-      color: var(--text);
-      background: #ffffff;
-      line-height: 1.5;
-    }
-
-    .container {
-      width: min(1080px, 92%);
-      margin: 0 auto;
-    }
-
-    /* HERO */
-
-    .hero {
-      padding: 86px 0 74px;
-      text-align: center;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--blue);
-      background: var(--soft);
-      border: 1px solid var(--border);
-      padding: 8px 14px;
-      border-radius: 999px;
-      margin-bottom: 24px;
-    }
-
-    .badge-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--blue);
-      border-radius: 50%;
-      display: inline-block;
-    }
-
-    h1 {
-      font-size: clamp(44px, 7vw, 76px);
-      line-height: 0.96;
-      letter-spacing: -3.4px;
-      font-weight: 900;
-      max-width: 980px;
-      margin: 0 auto 24px;
-    }
-
-    .sub {
-      font-size: clamp(18px, 2vw, 22px);
-      color: var(--muted);
-      max-width: 780px;
-      margin: 0 auto 38px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-    }
-
-    .cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--blue);
-      color: #fff;
-      text-decoration: none;
-      font-size: 17px;
-      font-weight: 800;
-      padding: 18px 30px;
-      border-radius: 12px;
-      box-shadow: 0 14px 30px rgba(6, 59, 115, 0.18);
-      transition: all 0.2s ease;
-    }
-
-    .cta:hover {
-      background: var(--blue-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 18px 38px rgba(6, 59, 115, 0.24);
-    }
-
-    .cta.secondary {
-      background: #111827;
-      color: white;
-      border: none;
-      box-shadow: 0 14px 30px rgba(17, 24, 39, 0.14);
-    }
-
-    .cta.secondary:hover {
-      background: #000000;
-      transform: translateY(-2px);
-      box-shadow: 0 18px 38px rgba(17, 24, 39, 0.20);
-    }
-
-    /* SECTIONS */
-
-    .section {
-      padding: 66px 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .section.soft {
-      background: var(--soft);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .section-head {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 20px;
-    }
-
-    .section-number {
-      color: var(--blue);
-      background: #EAF2FB;
-      border: 1px solid #D8E7F7;
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      font-weight: 800;
-      flex-shrink: 0;
-    }
-
-    .label {
-      font-size: 15px;
-      text-transform: uppercase;
-      letter-spacing: 2.4px;
-      color: var(--blue);
-      font-weight: 800;
-    }
-
-    .big-text {
-      font-size: clamp(30px, 4vw, 46px);
-      line-height: 1.16;
-      letter-spacing: -1.4px;
-      font-weight: 650;
-      max-width: 980px;
-    }
-
-    .body-text {
-      font-size: 20px;
-      color: var(--muted);
-      max-width: 880px;
-      margin-top: 20px;
-    }
-
-    /* GRID */
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1.12fr 0.88fr;
-      gap: 28px;
-      align-items: stretch;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 34px;
-      box-shadow: 0 10px 28px rgba(17, 24, 39, 0.04);
-    }
-
-    .card-title {
-      font-size: 15px;
-      text-transform: uppercase;
-      letter-spacing: 2.2px;
-      color: var(--blue);
-      font-weight: 800;
-      margin-bottom: 24px;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 18px;
-      color: var(--text);
-      margin-bottom: 18px;
-    }
-
-    li:last-child {
-      margin-bottom: 0;
-    }
-
-    .arrow {
-      color: var(--blue);
-      font-weight: 900;
-      line-height: 1.4;
-      flex-shrink: 0;
-    }
-
-    /* FOUNDER */
-
-    .founder {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-bottom: 24px;
-    }
-
-    .founder img {
-      width: 86px;
-      height: 86px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center 28%;
-      border: 4px solid #fff;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
-      flex-shrink: 0;
-      background: #eef2f7;
-    }
-
-    .founder h3 {
-      font-size: 22px;
-      line-height: 1.1;
-      margin-bottom: 6px;
-      letter-spacing: -0.4px;
-    }
-
-    .founder-role {
-      font-size: 15px;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .founder-email {
-      font-size: 15px;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .founder a {
-      color: var(--blue);
-      text-decoration: none;
-      font-weight: 800;
-      font-size: 15px;
-    }
-
-    .note {
-      padding-top: 22px;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 16px;
-    }
-
-    /* REAL EVENTS */
-
-    .events-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 42px;
-    }
-
-    .event-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 10px 28px rgba(17, 24, 39, 0.05);
-      transition: all 0.2s ease;
-    }
-
-    .event-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 40px rgba(17, 24, 39, 0.10);
-    }
-
-    .event-card img {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .event-content {
-      padding: 22px;
-    }
-
-    .event-title {
-      font-size: 18px;
-      font-weight: 800;
-      margin-bottom: 10px;
-      color: var(--text);
-    }
-
-    .event-desc {
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    /* FOOTER */
-
-    footer {
-      text-align: center;
-      padding: 56px 0 40px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    footer p + p {
-      margin-top: 6px;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 840px) {
-
-      .hero {
-        padding: 64px 0 54px;
-      }
-
-      h1 {
-        letter-spacing: -2px;
-      }
-
-      .section {
-        padding: 52px 0;
-      }
-
-      .section-head {
-        align-items: flex-start;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .card {
-        padding: 28px;
-      }
-
-      .events-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .founder {
-        align-items: center;
-      }
-
-      .founder img {
-        width: 76px;
-        height: 76px;
-      }
-
-    }
-  </style>
+  <meta name="description" content="EventOS — Sistema operativo AI para productoras de eventos. Ventas, presupuestos, layouts e inventario en un solo lugar." />
+  <title>EventOS — Sistema Operativo para Productoras de Eventos</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
 
-  <main>
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<nav class="nav" id="nav">
+  <div class="container">
+    <div class="nav-inner">
 
-    <section class="hero">
-      <div class="container">
+      <!-- Logo -->
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-icon">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">EventOS</span>
+          <span class="nav-logo-sub">by Reality Near</span>
+        </div>
+      </a>
 
-        <div class="badge">
-          <span class="badge-dot"></span>
-          Live system currently used in real events
+      <!-- Center links -->
+      <div class="nav-links">
+        <a href="#solucion" data-i18n="nav_modulos">Módulos</a>
+        <a href="#planes" data-i18n="nav_planes">Planes</a>
+        <a href="#footer" data-i18n="nav_contacto">Contacto</a>
+      </div>
+
+      <!-- Right -->
+      <div class="nav-right">
+        <div class="lang-toggle">
+          <button data-lang="es" class="active">ES</button>
+          <button data-lang="en">EN</button>
+        </div>
+        <button class="btn-nav-login" onclick="window.location='https://eventos-identity-frontend.vercel.app'" data-i18n="nav_login">Iniciar sesión</button>
+        <button class="btn-nav-cta" onclick="window.location='https://eventos-identity-frontend.vercel.app'" data-i18n="nav_cta">Empezar gratis</button>
+      </div>
+
+      <!-- Hamburger -->
+      <button class="nav-hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile nav drawer -->
+<div class="nav-mobile" id="nav-mobile">
+  <a href="#solucion" data-i18n="nav_modulos">Módulos</a>
+  <a href="#planes" data-i18n="nav_planes">Planes</a>
+  <a href="#footer" data-i18n="nav_contacto">Contacto</a>
+  <div class="nav-mobile-lang">
+    <button data-lang="es" class="active">ES</button>
+    <button data-lang="en">EN</button>
+  </div>
+  <div class="nav-mobile-cta">
+    <a href="https://eventos-identity-frontend.vercel.app" class="primary" data-i18n="nav_cta">Empezar gratis</a>
+    <a href="https://eventos-identity-frontend.vercel.app" class="secondary" data-i18n="nav_login">Iniciar sesión</a>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" id="hero">
+
+  <!-- Slides -->
+  <div class="hero-slides">
+    <div class="hero-slide active"></div>
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="container" style="width:100%;max-width:100%;padding:0 5%;">
+    <div class="hero-inner">
+
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          <span data-i18n="hero_badge">Sistema operativo para productoras de eventos</span>
         </div>
 
-        <h1>
-          The AI-Native Event Operating System
+        <h1 class="hero-title" data-i18n="hero_title">
+          Produce eventos de clase mundial, sin caos.
         </h1>
 
-        <p class="sub">
-          EventOS replaces WhatsApp, spreadsheets, PDFs, and manual workflows
-          with structured data, automation, layouts, and real-time event operations.
+        <p class="hero-sub" data-i18n="hero_sub">
+          Agentes de AI + 20 años de experiencia en producción de eventos. Un sistema operativo diseñado para tu productora.
         </p>
 
-        <div class="hero-buttons">
-
-          <a href="https://tally.so/r/4412AO" target="_blank" class="cta">
-            Run your first event flow in 60 seconds
+        <div class="hero-btns">
+          <a href="https://eventos-identity-frontend.vercel.app" class="btn btn-white">
+            <span data-i18n="hero_btn1">Empezar gratis →</span>
           </a>
-
-          <a href="https://rn-layout-engine.vercel.app/" target="_blank" class="cta secondary">
-            Create your layout in under 2 minutes
-          </a>
-
+          <button class="btn btn-ghost-white">
+            <span data-i18n="hero_btn2">▶ Ver demo</span>
+          </button>
         </div>
 
-        <p style="margin-top:16px; font-size:14px; color: var(--muted);">
-          Already used with real productions and paying clients
+        <p class="hero-trust" data-i18n="hero_trust">
+          Ya usado en producciones reales con clientes reales
+        </p>
+      </div>
+
+      <!-- Floating cards (desktop only) -->
+      <div class="hero-cards">
+        <div class="hero-card hero-card-1">
+          <div class="hc-label" data-i18n="hc_label">Presupuesto activo</div>
+          <div class="hc-status" data-i18n="hc_status">● En producción</div>
+          <div class="hc-amount">S/ 78,400</div>
+          <div class="hc-meta" data-i18n="hc_meta">Matrimonio · 200 pax</div>
+          <div class="hc-progress-track">
+            <div class="hc-progress-bar"></div>
+          </div>
+        </div>
+        <div class="hero-card hero-card-2">
+          <div class="hc2-icon">✦</div>
+          <div>
+            <div class="hc2-name" data-i18n="hc2_name">EventOS AI</div>
+            <div class="hc2-desc" data-i18n="hc2_desc">Presupuesto generado en 8 segundos</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Slide dots -->
+  <div class="hero-dots">
+    <button class="hero-dot active" aria-label="Slide 1"></button>
+    <button class="hero-dot" aria-label="Slide 2"></button>
+    <button class="hero-dot" aria-label="Slide 3"></button>
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     STATS BAR
+     ============================================================ -->
+<section class="stats-bar">
+  <div class="container">
+    <div class="stats-grid">
+
+      <div class="stat-item">
+        <div class="stat-number">
+          <span data-counter="20" data-prefix="+" data-suffix="">+20</span>
+        </div>
+        <div class="stat-label" data-i18n="stat1_label">Años de experiencia</div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-number">
+          <span data-counter="500" data-prefix="" data-suffix="+">500+</span>
+        </div>
+        <div class="stat-label" data-i18n="stat2_label">Eventos producidos</div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-number">
+          <span data-counter="5" data-prefix="" data-suffix="">5</span>
+        </div>
+        <div class="stat-label" data-i18n="stat3_label">Módulos integrados</div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-number">AI</div>
+        <div class="stat-label" data-i18n="stat4_label">AI nativa en todo</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PROBLEMA
+     ============================================================ -->
+<section class="section-problem" id="problema">
+  <div class="container">
+    <div class="problem-head">
+      <div class="eyebrow" data-i18n="problem_eyebrow">01 — EL PROBLEMA</div>
+      <h2 class="section-h2" data-i18n="problem_h2">
+        Las productoras de eventos manejan operaciones millonarias con WhatsApp, Excel y PDFs.
+      </h2>
+    </div>
+
+    <div class="problem-cards">
+
+      <div class="problem-card">
+        <div class="problem-icon">⚡</div>
+        <div class="problem-title" data-i18n="prob1_title">Sin sistema central</div>
+        <p class="problem-desc" data-i18n="prob1_desc">
+          Todo fragmentado en herramientas distintas. Sin visión unificada de tus operaciones.
+        </p>
+      </div>
+
+      <div class="problem-card">
+        <div class="problem-icon">📊</div>
+        <div class="problem-title" data-i18n="prob2_title">Presupuestos manuales</div>
+        <p class="problem-desc" data-i18n="prob2_desc">
+          Horas calculando en Excel, errores costosos, versiones desactualizadas compartidas por correo.
+        </p>
+      </div>
+
+      <div class="problem-card">
+        <div class="problem-icon">🔍</div>
+        <div class="problem-title" data-i18n="prob3_title">Cero visibilidad</div>
+        <p class="problem-desc" data-i18n="prob3_desc">
+          No sabes el estado real de tu evento en tiempo real. Las decisiones se toman a ciegas.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SOLUCIÓN
+     ============================================================ -->
+<section class="section-solution" id="solucion">
+  <div class="container">
+    <div class="solution-head">
+      <div class="eyebrow" data-i18n="solution_eyebrow">02 — LA SOLUCIÓN</div>
+      <h2 class="section-h2" data-i18n="solution_h2">
+        EventOS centraliza todo. Ventas, presupuestos, layouts, inventario y operaciones — en un solo sistema.
+      </h2>
+    </div>
+
+    <div class="modules-grid">
+
+      <div class="module-card">
+        <div class="module-icon">💼</div>
+        <div class="module-name" data-i18n="mod1_name">Ventas</div>
+        <p class="module-desc" data-i18n="mod1_desc">
+          Pipeline de ventas con precios calculados por AI. Cotizaciones en minutos, no en horas.
+        </p>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon">📋</div>
+        <div class="module-name" data-i18n="mod2_name">Eventos</div>
+        <p class="module-desc" data-i18n="mod2_desc">
+          Hoja de trabajo con 36 partidas por evento. Control total de cada detalle operativo.
+        </p>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon">📦</div>
+        <div class="module-name" data-i18n="mod3_name">Inventarios</div>
+        <p class="module-desc" data-i18n="mod3_desc">
+          Control de activos propios, arrendados y consumibles. Sin pérdidas, sin sorpresas.
+        </p>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon">🗺️</div>
+        <div class="module-name" data-i18n="mod4_name">Layout Engine</div>
+        <p class="module-desc" data-i18n="mod4_desc">
+          Editor 2D de planos de venue con export PDF. Diseña antes de producir.
+        </p>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon">✦</div>
+        <div class="module-name" data-i18n="mod5_name">Agentes AI</div>
+        <p class="module-desc" data-i18n="mod5_desc">
+          Captura leads, califica prospectos y genera cotizaciones automáticamente. 24/7.
+        </p>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon">🏢</div>
+        <div class="module-name" data-i18n="mod6_name">Multi-tenant</div>
+        <p class="module-desc" data-i18n="mod6_desc">
+          Cada productora con su espacio aislado y seguro. Escala sin límites.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     GALERÍA
+     ============================================================ -->
+<section class="section-galeria" id="galeria">
+  <div class="container">
+    <div class="galeria-head">
+      <div class="eyebrow" data-i18n="galeria_eyebrow">Eventos reales</div>
+      <h2 class="section-h2" data-i18n="galeria_h2">
+        Más de 20 años produciendo eventos de clase mundial
+      </h2>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-main">
+        <img src="assets/images/evento-1.jpg" alt="Evento producido por Reality Near" loading="lazy" />
+      </div>
+      <div class="gallery-side">
+        <div class="gallery-thumb">
+          <img src="assets/images/evento-2.jpg" alt="Evento Reality Near" loading="lazy" />
+        </div>
+        <div class="gallery-thumb">
+          <img src="assets/images/evento-3.jpg" alt="Evento Reality Near" loading="lazy" />
+        </div>
+        <div class="gallery-thumb">
+          <img src="assets/images/evento-4.jpg" alt="Evento Reality Near" loading="lazy" />
+        </div>
+        <div class="gallery-thumb">
+          <img src="assets/images/evento-5.jpg" alt="Evento Reality Near" loading="lazy" />
+        </div>
+      </div>
+    </div>
+
+    <p class="galeria-caption" data-i18n="galeria_caption">
+      Cada evento producido con el mismo sistema que hoy está disponible para tu productora.
+    </p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     LAYOUT ENGINE
+     ============================================================ -->
+<section class="section-layout" id="layout">
+  <div class="container">
+    <div class="layout-grid">
+
+      <div class="layout-text">
+        <div class="eyebrow" data-i18n="layout_eyebrow">Layout Engine</div>
+        <h2 class="section-h2" data-i18n="layout_h2">Diseña el venue antes de producirlo</h2>
+        <p class="layout-desc" data-i18n="layout_desc">
+          Editor 2D profesional. Planos con medidas reales, distribución de mobiliario y zonas. Export PDF listo para el equipo.
         </p>
 
+        <div class="layout-features">
+          <div class="layout-feature">
+            <div class="layout-feature-icon">▦</div>
+            <span class="layout-feature-text" data-i18n="layout_f1">Canvas interactivo con 40+ assets</span>
+          </div>
+          <div class="layout-feature">
+            <div class="layout-feature-icon">📐</div>
+            <span class="layout-feature-text" data-i18n="layout_f2">Medidas reales escala 1/100</span>
+          </div>
+          <div class="layout-feature">
+            <div class="layout-feature-icon">📄</div>
+            <span class="layout-feature-text" data-i18n="layout_f3">Export PDF con cajetín técnico</span>
+          </div>
+          <div class="layout-feature">
+            <div class="layout-feature-icon">👥</div>
+            <span class="layout-feature-text" data-i18n="layout_f4">Compartible con todo el equipo</span>
+          </div>
+        </div>
+
+        <a href="https://eventos-identity-frontend.vercel.app" class="btn btn-primary">
+          <span data-i18n="layout_btn">Ver Layout Engine →</span>
+        </a>
       </div>
-    </section>
 
-    <section class="section">
-      <div class="container">
-
-        <div class="section-head">
-          <span class="section-number">01</span>
-          <span class="label">Problem</span>
+      <div class="layout-img-wrap">
+        <div class="layout-img">
+          <img src="assets/images/layout-plano.png" alt="EventOS Layout Engine — plano de venue" loading="lazy" />
         </div>
-
-        <p class="big-text">
-          Event companies still run multimillion-dollar operations on WhatsApp,
-          spreadsheets, PDFs, calls, and fragmented workflows.
-        </p>
-
+        <div class="layout-badge" data-i18n="layout_badge">
+          EventOS Layout Engine · Esc. 1/100
+        </div>
       </div>
-    </section>
 
-    <section class="section soft">
-      <div class="container">
+    </div>
+  </div>
+</section>
 
-        <div class="section-head">
-          <span class="section-number">02</span>
-          <span class="label">Solution</span>
-        </div>
 
-        <p class="big-text">
-          EventOS structures operational data, automates workflows,
-          creates layouts, and helps event companies run sales,
-          production, logistics, and execution from a single system.
-        </p>
+<!-- ============================================================
+     CREDIBILIDAD
+     ============================================================ -->
+<section class="section-credibilidad" id="nosotros">
+  <div class="container">
+    <div class="eyebrow" data-i18n="cred_eyebrow">Por qué EventOS</div>
+    <h2 class="section-h2" data-i18n="cred_h2">Construido desde adentro de la industria</h2>
 
+    <p class="credibilidad-text" data-i18n="cred_text">
+      No somos una empresa de software que descubrió los eventos. Somos un equipo con más de 20 años produciendo eventos de clase mundial en Lima y el Perú. Sabemos el caos porque lo vivimos. EventOS es el sistema que siempre necesitamos y que no existía.
+    </p>
+
+    <div class="credibilidad-stats">
+      <div>
+        <div class="cred-stat-number" data-counter="20" data-prefix="" data-suffix="+">20+</div>
+        <div class="cred-stat-label" data-i18n="cred_s1_label">Años</div>
       </div>
-    </section>
-
-    <section class="section">
-      <div class="container grid">
-
-        <div class="card">
-
-          <div class="card-title">
-            What works today
-          </div>
-
-          <ul>
-
-            <li>
-              <span class="arrow">→</span>
-              <span>Lead capture → CRM → auto client folders</span>
-            </li>
-
-            <li>
-              <span class="arrow">→</span>
-              <span>Instant quotes in under 1 minute</span>
-            </li>
-
-            <li>
-              <span class="arrow">→</span>
-              <span>AI-assisted event layouts</span>
-            </li>
-
-            <li>
-              <span class="arrow">→</span>
-              <span>Real operational data structured per event</span>
-            </li>
-
-            <li>
-              <span class="arrow">→</span>
-              <span>Post-event tracking: stock, costs, margins</span>
-            </li>
-
-          </ul>
-
-        </div>
-
-        <div class="card">
-
-          <div class="card-title">
-            Founder
-          </div>
-
-          <div class="founder">
-
-            <img src="assets/profile.jpg" alt="Javier Bambaren D">
-
-            <div>
-
-              <h3>Javier Bambaren D</h3>
-
-              <div class="founder-role">
-                Founder, EventOS
-              </div>
-
-              <div class="founder-email">
-                jbambaren@realitynear.org
-              </div>
-
-              <a href="https://www.linkedin.com/in/javier-bambaren-dabdoub/" target="_blank">
-                LinkedIn Profile →
-              </a>
-
-            </div>
-
-          </div>
-
-          <p class="note">
-            20+ years running live events → now building EventOS
-          </p>
-
-        </div>
-
+      <div>
+        <div class="cred-stat-number" data-counter="500" data-prefix="" data-suffix="+">500+</div>
+        <div class="cred-stat-label" data-i18n="cred_s2_label">Eventos</div>
       </div>
-    </section>
-
-    <section class="section soft">
-      <div class="container">
-
-        <div class="section-head">
-          <span class="section-number">03</span>
-          <span class="label">Real Events</span>
-        </div>
-
-        <p class="big-text">
-          Already used in live productions and real client events.
-        </p>
-
-        <p class="body-text">
-          From layout planning to real-world execution.
-          EventOS is already being tested in real operations,
-          layouts, workflows, and event execution with paying clients.
-        </p>
-
-        <div class="events-grid">
-
-          <div class="event-card">
-
-            <img src="assets/layout-event.jpg" alt="Layout Engine">
-
-            <div class="event-content">
-
-              <div class="event-title">
-                Layout Engine
-              </div>
-
-              <div class="event-desc">
-                Real layout created for a live wedding production using EventOS.
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="event-card">
-
-            <img src="assets/setup-1.jpg" alt="Live Production Setup">
-
-            <div class="event-content">
-
-              <div class="event-title">
-                Live Production Setup
-              </div>
-
-              <div class="event-desc">
-                Real production assembly for a paying client event.
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="event-card">
-
-            <img src="assets/setup-2.jpg" alt="Real Event Execution">
-
-            <div class="event-content">
-
-              <div class="event-title">
-                Real Event Execution
-              </div>
-
-              <div class="event-desc">
-                Built using EventOS layouts and operational workflows.
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
+      <div>
+        <div class="cred-stat-number" data-counter="1000" data-prefix="" data-suffix="+">1000+</div>
+        <div class="cred-stat-label" data-i18n="cred_s3_label">Pax por evento</div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-  </main>
 
-  <footer>
-    <p>Copyright © 2026 EventOS. All rights reserved.</p>
-  </footer>
+<!-- ============================================================
+     AGENTE AI
+     ============================================================ -->
+<section class="section-agente" id="agente">
+  <div class="container">
+    <div class="agente-box">
+      <div class="agente-avatar">✦</div>
+      <div class="agente-name" data-i18n="agente_name">EventOS AI</div>
+      <p class="agente-msg" data-i18n="agente_msg">
+        Hola, soy el asistente de EventOS. ¿Qué tipo de evento produces? Te muestro el plan ideal para ti.
+      </p>
+      <div class="agente-pills">
+        <button class="agente-pill" data-i18n="pill1">Eventos sociales</button>
+        <button class="agente-pill" data-i18n="pill2">Corporativos</button>
+        <button class="agente-pill" data-i18n="pill3">Local de eventos</button>
+        <button class="agente-pill" data-i18n="pill4">Ver todos los planes</button>
+      </div>
+    </div>
+  </div>
+</section>
 
+
+<!-- ============================================================
+     PLANES
+     ============================================================ -->
+<section class="section-planes" id="planes">
+  <div class="container">
+    <div class="planes-head">
+      <div class="eyebrow" data-i18n="planes_eyebrow">Planes</div>
+      <h2 class="section-h2" data-i18n="planes_h2">Simple. Sin sorpresas.</h2>
+    </div>
+
+    <div class="planes-grid">
+
+      <!-- Starter -->
+      <div class="plan-card">
+        <div class="plan-name" data-i18n="plan1_name">Starter</div>
+        <div class="plan-price">S/ 299</div>
+        <div class="plan-period" data-i18n="plan1_period">/mes</div>
+        <div class="plan-divider"></div>
+        <div class="plan-features">
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan1_f1">Ventas + Presupuestos</span></div>
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan1_f2">Hasta 3 usuarios</span></div>
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan1_f3">50 eventos/año</span></div>
+        </div>
+        <a href="https://eventos-identity-frontend.vercel.app" class="plan-btn plan-btn-outline" data-i18n="plan1_btn">
+          Empezar gratis
+        </a>
+      </div>
+
+      <!-- Pro -->
+      <div class="plan-card featured">
+        <div class="plan-popular-badge" data-i18n="plan2_badge">Más popular</div>
+        <div class="plan-name" data-i18n="plan2_name">Pro</div>
+        <div class="plan-price">S/ 699</div>
+        <div class="plan-period" data-i18n="plan2_period">/mes</div>
+        <div class="plan-divider"></div>
+        <div class="plan-features">
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan2_f1">Todos los módulos</span></div>
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan2_f2">Hasta 10 usuarios</span></div>
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan2_f3">Agentes AI incluidos</span></div>
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan2_f4">Eventos ilimitados</span></div>
+        </div>
+        <a href="https://eventos-identity-frontend.vercel.app" class="plan-btn plan-btn-solid" data-i18n="plan2_btn">
+          Empezar gratis
+        </a>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="plan-card">
+        <div class="plan-name" data-i18n="plan3_name">Enterprise</div>
+        <div class="plan-price-custom">Custom</div>
+        <div class="plan-period">&nbsp;</div>
+        <div class="plan-divider"></div>
+        <div class="plan-features">
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan3_f1">Multi-sede</span></div>
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan3_f2">Usuarios ilimitados</span></div>
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan3_f3">SLA dedicado</span></div>
+        </div>
+        <a href="mailto:jbambaren@realitynear.org" class="plan-btn plan-btn-outline" data-i18n="plan3_btn">
+          Contactar
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer" id="footer">
+  <div class="container">
+    <div class="footer-top">
+
+      <a href="#" class="nav-logo footer-logo">
+        <div class="nav-logo-icon">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">EventOS</span>
+          <span class="nav-logo-sub">by Reality Near</span>
+        </div>
+      </a>
+
+      <div class="footer-links">
+        <a href="#solucion" data-i18n="footer_modulos">Módulos</a>
+        <a href="#planes" data-i18n="footer_planes">Planes</a>
+        <a href="mailto:jbambaren@realitynear.org" data-i18n="footer_contacto">Contacto</a>
+        <a href="#" data-i18n="footer_terms">Términos</a>
+        <a href="#" data-i18n="footer_privacy">Privacidad</a>
+      </div>
+
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy" data-i18n="footer_copy">© 2026 Reality Near. Todos los derechos reservados.</p>
+      <div class="footer-bottom-links">
+        <a href="mailto:jbambaren@realitynear.org">jbambaren@realitynear.org</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+<script src="assets/js/main.js"></script>
 </body>
 </html>
