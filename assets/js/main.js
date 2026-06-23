@@ -32,7 +32,7 @@ const translations = {
     stat4_label: "AI nativa en todo",
 
     problem_eyebrow: "01 — EL PROBLEMA",
-    problem_h2: "Las productoras de eventos manejan operaciones millonarias con WhatsApp, Excel y PDFs.",
+    problem_h2: "Los eventos mueven millones de dólares al año y se gestionan por WhatsApp, sheets, PDFs y hojas sueltas — sin aprovechar la data.",
     prob1_title: "Sin sistema central",
     prob1_desc: "Todo fragmentado en herramientas distintas. Sin visión unificada de tus operaciones.",
     prob2_title: "Presupuestos manuales",
@@ -41,7 +41,7 @@ const translations = {
     prob3_desc: "No sabes el estado real de tu evento en tiempo real. Las decisiones se toman a ciegas.",
 
     solution_eyebrow: "02 — LA SOLUCIÓN",
-    solution_h2: "EventOS centraliza todo. Ventas, presupuestos, layouts, inventario y operaciones — en un solo sistema.",
+    solution_h2: "EventOS centraliza todo. Ventas, presupuestos, layouts, inventario y operaciones — en un solo sistema nativo de AI.",
     mod1_name: "Ventas",
     mod1_desc: "Pipeline de ventas con precios calculados por AI. Cotizaciones en minutos, no en horas.",
     mod2_name: "Eventos",
@@ -142,7 +142,7 @@ const translations = {
     stat4_label: "AI-native throughout",
 
     problem_eyebrow: "01 — THE PROBLEM",
-    problem_h2: "Event companies manage million-dollar operations with WhatsApp, Excel, and PDFs.",
+    problem_h2: "Events move billions of dollars a year and are managed through WhatsApp, spreadsheets, PDFs and loose papers — without leveraging the data.",
     prob1_title: "No central system",
     prob1_desc: "Everything fragmented across different tools. No unified view of your operations.",
     prob2_title: "Manual budgets",
@@ -151,7 +151,7 @@ const translations = {
     prob3_desc: "You don't know the real-time status of your event. Decisions made in the dark.",
 
     solution_eyebrow: "02 — THE SOLUTION",
-    solution_h2: "EventOS centralizes everything. Sales, budgets, layouts, inventory and operations — in one system.",
+    solution_h2: "EventOS centralizes everything. Sales, budgets, layouts, inventory and operations — in one AI-native system.",
     mod1_name: "Sales",
     mod1_desc: "Sales pipeline with AI-calculated pricing. Quotes in minutes, not hours.",
     mod2_name: "Events",

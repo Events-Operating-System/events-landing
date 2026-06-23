@@ -29,9 +29,9 @@ button { font-family: inherit; cursor: pointer; }
 .container { width: min(1100px, 92%); margin: 0 auto; }
 
 .eyebrow {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 2.5px;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--azul);
   margin-bottom: 14px;
