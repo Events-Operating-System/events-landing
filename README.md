@@ -9,7 +9,7 @@ Landing page de alto impacto para EventOS, el sistema operativo AI para producto
 - HTML5 + CSS3 + JavaScript vanilla
 - Sin frameworks ni dependencias externas
 - Google Fonts — Inter (400, 500, 700)
-- Google Analytics (G-JD9G00JWBS)
+- Sin analítica (la Política de Cookies v1.0 dice que EventOS no usa analítica)
 
 ## Estructura
 
