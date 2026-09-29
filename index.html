@@ -45,7 +45,7 @@
           <button data-lang="en">EN</button>
         </div>
         <button class="btn-nav-login" onclick="window.location='https://eventos-identity-frontend.vercel.app'" data-i18n="nav_login">Iniciar sesión</button>
-        <button class="btn-nav-cta" onclick="window.location='https://eventos-identity-frontend.vercel.app'" data-i18n="nav_cta">Empezar gratis</button>
+        <button class="btn-nav-cta" onclick="window.location='https://eventos-identity-frontend.vercel.app'" data-i18n="nav_cta">Empezar</button>
       </div>
 
       <!-- Hamburger -->
@@ -67,7 +67,7 @@
     <button data-lang="en">EN</button>
   </div>
   <div class="nav-mobile-cta">
-    <a href="https://eventos-identity-frontend.vercel.app" class="primary" data-i18n="nav_cta">Empezar gratis</a>
+    <a href="https://eventos-identity-frontend.vercel.app" class="primary" data-i18n="nav_cta">Empezar</a>
     <a href="https://eventos-identity-frontend.vercel.app" class="secondary" data-i18n="nav_login">Iniciar sesión</a>
   </div>
 </div>
@@ -105,7 +105,7 @@
 
         <div class="hero-btns">
           <a href="https://eventos-identity-frontend.vercel.app" class="btn btn-white">
-            <span data-i18n="hero_btn1">Empezar gratis →</span>
+            <span data-i18n="hero_btn1">Empezar →</span>
           </a>
           <button class="btn btn-ghost-white">
             <span data-i18n="hero_btn2">▶ Ver demo</span>
@@ -449,55 +449,66 @@
       <h2 class="section-h2" data-i18n="planes_h2">Simple. Sin sorpresas.</h2>
     </div>
 
+    <!-- Precios y límites = tabla plans (Superadmin → Planes), USD. Si cambian allá, actualizar acá. -->
     <div class="planes-grid">
 
-      <!-- Starter -->
+      <!-- Plan 1 -->
       <div class="plan-card">
-        <div class="plan-name" data-i18n="plan1_name">Starter</div>
-        <div class="plan-price">S/ 299</div>
-        <div class="plan-period" data-i18n="plan1_period">/mes</div>
+        <div class="plan-name" data-i18n="plan1_name">Plan 1</div>
+        <div class="plan-price">US$ 70</div>
+        <div class="plan-period" data-i18n="plan_period">/mes</div>
+        <div class="plan-annual" data-i18n="plan1_annual">o US$ 700 al año</div>
         <div class="plan-divider"></div>
         <div class="plan-features">
-          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan1_f1">Ventas + Presupuestos</span></div>
-          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan1_f2">Hasta 3 usuarios</span></div>
-          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan1_f3">50 eventos/año</span></div>
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan1_f1">Módulos esenciales</span></div>
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan1_f2">1 colaborador</span></div>
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan1_f3">100 productos de inventario</span></div>
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan1_f4">20 clientes en portal</span></div>
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan1_f5">5 GB de almacenamiento</span></div>
         </div>
-        <a href="https://eventos-identity-frontend.vercel.app" class="plan-btn plan-btn-outline" data-i18n="plan1_btn">
-          Empezar gratis
+        <a href="https://eventos-identity-frontend.vercel.app" class="plan-btn plan-btn-outline" data-i18n="plan_btn">
+          Elegir plan
         </a>
       </div>
 
-      <!-- Pro -->
+      <!-- Plan 2 -->
       <div class="plan-card featured">
         <div class="plan-popular-badge" data-i18n="plan2_badge">Más popular</div>
-        <div class="plan-name" data-i18n="plan2_name">Pro</div>
-        <div class="plan-price">S/ 699</div>
-        <div class="plan-period" data-i18n="plan2_period">/mes</div>
+        <div class="plan-name" data-i18n="plan2_name">Plan 2</div>
+        <div class="plan-price">US$ 100</div>
+        <div class="plan-period" data-i18n="plan_period">/mes</div>
+        <div class="plan-annual" data-i18n="plan2_annual">o US$ 1.000 al año</div>
         <div class="plan-divider"></div>
         <div class="plan-features">
-          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan2_f1">Todos los módulos</span></div>
-          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan2_f2">Hasta 10 usuarios</span></div>
-          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan2_f3">Agentes AI incluidos</span></div>
-          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan2_f4">Eventos ilimitados</span></div>
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan2_f1">Módulos avanzados</span></div>
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan2_f2">6 colaboradores</span></div>
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan2_f3">500 productos de inventario</span></div>
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan2_f4">50 clientes en portal</span></div>
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan2_f5">20 GB de almacenamiento</span></div>
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan2_f6">Incluye Agentes AI</span></div>
         </div>
-        <a href="https://eventos-identity-frontend.vercel.app" class="plan-btn plan-btn-solid" data-i18n="plan2_btn">
-          Empezar gratis
+        <a href="https://eventos-identity-frontend.vercel.app" class="plan-btn plan-btn-solid" data-i18n="plan_btn">
+          Elegir plan
         </a>
       </div>
 
-      <!-- Enterprise -->
+      <!-- Plan 3 -->
       <div class="plan-card">
-        <div class="plan-name" data-i18n="plan3_name">Enterprise</div>
-        <div class="plan-price-custom">Custom</div>
-        <div class="plan-period">&nbsp;</div>
+        <div class="plan-name" data-i18n="plan3_name">Plan 3</div>
+        <div class="plan-price">US$ 200</div>
+        <div class="plan-period" data-i18n="plan_period">/mes</div>
+        <div class="plan-annual" data-i18n="plan3_annual">o US$ 2.000 al año</div>
         <div class="plan-divider"></div>
         <div class="plan-features">
-          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan3_f1">Multi-sede</span></div>
-          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan3_f2">Usuarios ilimitados</span></div>
-          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan3_f3">SLA dedicado</span></div>
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan3_f1">Todos los módulos</span></div>
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan3_f2">10 colaboradores</span></div>
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan3_f3">1.000 productos de inventario</span></div>
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan3_f4">100 clientes en portal</span></div>
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan3_f5">50 GB de almacenamiento</span></div>
+          <div class="plan-feature"><span class="plan-check">✓</span><span data-i18n="plan3_f6">Incluye Agentes AI</span></div>
         </div>
-        <a href="mailto:jbambaren@realitynear.org" class="plan-btn plan-btn-outline" data-i18n="plan3_btn">
-          Contactar
+        <a href="https://eventos-identity-frontend.vercel.app" class="plan-btn plan-btn-outline" data-i18n="plan_btn">
+          Elegir plan
         </a>
       </div>
 

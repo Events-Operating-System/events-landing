@@ -901,8 +901,13 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 15px;
   font-weight: 500;
   color: var(--gris-texto);
-  margin-bottom: 24px;
+  margin-bottom: 4px;
   margin-top: 4px;
+}
+.plan-annual {
+  font-size: 13px;
+  color: var(--gris-texto);
+  margin-bottom: 24px;
 }
 
 .plan-divider {
