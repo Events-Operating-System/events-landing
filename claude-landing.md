@@ -61,3 +61,17 @@ docs: add README and claude-landing notes
 - Layout Engine usa `layout-plano.png` — subida.
 - Para agregar nuevas secciones, seguir el patrón `data-i18n` en HTML y agregar las claves en ambos idiomas en `main.js`.
 - El eyebrow class `.eyebrow` aplica a toda la página — cambios de tamaño son globales.
+
+## Documentos legales y planes (2026-09-29)
+
+- `legal/src/{es,en,pt}/*.md` → `node legal/build.mjs` → `legal/{es,en,pt}/*.html` (vigente),
+  `legal/v1/{es,en,pt}/*.html` (fija, el build no la reescribe) y `legal/manifest.json` (sha256 del
+  original en español, el mismo que guarda la base en `legal_documents`). El español es el original;
+  EN/PT son traducción V1 sujeta a revisión. Estilos al final de `style.css` (`.legal-*`).
+- Versión nueva: editar las fuentes, subir `VERSION`/`VERSION_DIR` en `build.mjs`, regenerar y cargar
+  la versión en `legal_documents` con una migración (repo de administración).
+- Footer: Términos / Privacidad / Cookies / Uso de IA con enlaces según idioma (`legalSlugs` en
+  `main.js`); copyright de JBD Investment Corp Inc.
+- Sin Google Analytics (la Política de Cookies v1.0 dice que no hay analítica).
+- Planes = tabla `plans` de EventOS (US$ 70/100/200 por mes, 700/1.000/2.000 por año, mismos límites).
+  Si cambian allá, actualizar acá a mano.
