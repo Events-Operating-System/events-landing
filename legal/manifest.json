@@ -1,0 +1,59 @@
+{
+  "version": "1.0",
+  "version_dir": "v1",
+  "base_url": "https://events-operating-system.github.io/events-landing",
+  "documents": {
+    "terms": {
+      "sha256": "7330b5a383e969c50a78501e522a37f55407607ee7457d2da15f0b90ab416fa8",
+      "urls": {
+        "es": "https://events-operating-system.github.io/events-landing/legal/es/terminos.html",
+        "en": "https://events-operating-system.github.io/events-landing/legal/en/terms.html",
+        "pt": "https://events-operating-system.github.io/events-landing/legal/pt/termos.html"
+      },
+      "permanent_urls": {
+        "es": "https://events-operating-system.github.io/events-landing/legal/v1/es/terminos.html",
+        "en": "https://events-operating-system.github.io/events-landing/legal/v1/en/terms.html",
+        "pt": "https://events-operating-system.github.io/events-landing/legal/v1/pt/termos.html"
+      }
+    },
+    "privacy": {
+      "sha256": "36c7f129c5ec0101c4c52d75998a7b2c87081216e726b33a91428a1c466fa3cb",
+      "urls": {
+        "es": "https://events-operating-system.github.io/events-landing/legal/es/privacidad.html",
+        "en": "https://events-operating-system.github.io/events-landing/legal/en/privacy.html",
+        "pt": "https://events-operating-system.github.io/events-landing/legal/pt/privacidade.html"
+      },
+      "permanent_urls": {
+        "es": "https://events-operating-system.github.io/events-landing/legal/v1/es/privacidad.html",
+        "en": "https://events-operating-system.github.io/events-landing/legal/v1/en/privacy.html",
+        "pt": "https://events-operating-system.github.io/events-landing/legal/v1/pt/privacidade.html"
+      }
+    },
+    "cookies": {
+      "sha256": "d0c5e5d9d323660697ac6efdecd53390268261b9d3e2b426fdf5a850f5db328c",
+      "urls": {
+        "es": "https://events-operating-system.github.io/events-landing/legal/es/cookies.html",
+        "en": "https://events-operating-system.github.io/events-landing/legal/en/cookies.html",
+        "pt": "https://events-operating-system.github.io/events-landing/legal/pt/cookies.html"
+      },
+      "permanent_urls": {
+        "es": "https://events-operating-system.github.io/events-landing/legal/v1/es/cookies.html",
+        "en": "https://events-operating-system.github.io/events-landing/legal/v1/en/cookies.html",
+        "pt": "https://events-operating-system.github.io/events-landing/legal/v1/pt/cookies.html"
+      }
+    },
+    "ai": {
+      "sha256": "9dd1fd7ea82c746c01657c7b88eaa6396d96c62281020fa9c42c3127690bb06d",
+      "urls": {
+        "es": "https://events-operating-system.github.io/events-landing/legal/es/ia.html",
+        "en": "https://events-operating-system.github.io/events-landing/legal/en/ai.html",
+        "pt": "https://events-operating-system.github.io/events-landing/legal/pt/ia.html"
+      },
+      "permanent_urls": {
+        "es": "https://events-operating-system.github.io/events-landing/legal/v1/es/ia.html",
+        "en": "https://events-operating-system.github.io/events-landing/legal/v1/en/ai.html",
+        "pt": "https://events-operating-system.github.io/events-landing/legal/v1/pt/ia.html"
+      }
+    }
+  }
+}

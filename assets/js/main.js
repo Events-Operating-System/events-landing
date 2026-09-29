@@ -110,7 +110,9 @@ const translations = {
     footer_contacto: "Contacto",
     footer_terms: "Términos",
     footer_privacy: "Privacidad",
-    footer_copy: "© 2026 Reality Near. Todos los derechos reservados.",
+    footer_cookies: "Cookies",
+    footer_ai: "Uso de IA",
+    footer_copy: "© 2026 EventOS — operado por JBD Investment Corp Inc.",
   },
 
   en: {
@@ -220,11 +222,19 @@ const translations = {
     footer_contacto: "Contact",
     footer_terms: "Terms",
     footer_privacy: "Privacy",
-    footer_copy: "© 2026 Reality Near. All rights reserved.",
+    footer_cookies: "Cookies",
+    footer_ai: "AI use",
+    footer_copy: "© 2026 EventOS — operated by JBD Investment Corp Inc.",
   }
 };
 
 let currentLang = 'es';
+
+// Documentos legales (legal/build.mjs): mismo documento, nombre de archivo por idioma.
+const legalSlugs = {
+  es: { terms: 'terminos', privacy: 'privacidad', cookies: 'cookies', ai: 'ia' },
+  en: { terms: 'terms', privacy: 'privacy', cookies: 'cookies', ai: 'ai' },
+};
 
 function setLang(lang) {
   currentLang = lang;
@@ -237,6 +247,10 @@ function setLang(lang) {
 
   document.querySelectorAll('.lang-toggle button, .nav-mobile-lang button').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+
+  document.querySelectorAll('[data-legal]').forEach(el => {
+    el.href = `legal/${lang}/${legalSlugs[lang][el.dataset.legal]}.html`;
   });
 
   document.documentElement.lang = lang;
