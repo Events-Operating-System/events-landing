@@ -75,3 +75,23 @@ docs: add README and claude-landing notes
 - Sin Google Analytics (la Política de Cookies v1.0 dice que no hay analítica).
 - Planes = tabla `plans` de EventOS (US$ 70/100/200 por mes, 700/1.000/2.000 por año, mismos límites).
   Si cambian allá, actualizar acá a mano.
+
+## Rediseño (2026-10-02)
+
+- `index.html` + `assets/css/landing.css` + `assets/js/main.js` implementan `eventos_landing_demo.html`
+  (referencia visual, queda en la raíz). Se conservó lo anterior: `legal/` y `assets/css/style.css`
+  (lo usan las páginas legales), sin Google Analytics, planes en USD con su precio anual, sin "gratis",
+  copyright de JBD Investment Corp Inc.
+- i18n ES/EN/PT: `data-i18n` (texto) y `data-i18n-html` (solo títulos con `<br>`) contra
+  `translations` en `main.js`. Idioma inicial: el guardado (`localStorage`, opcional) o el del
+  navegador, si no español. El footer legal apunta a `legal/{idioma}/…`.
+- Enlaces: "Cliente" → `eventos-portal-cliente-frontend.vercel.app/login`; "Mi organización" →
+  Identity; "Crear mi organización" → `#planes`; "Elegir" →
+  `eventos-administracion-frontend.vercel.app/?plan=N` (preselección en "Crear tu organización", sin
+  Price IDs); LinkedIn del founder y de la empresa, Instagram y YouTube.
+- Videos: objeto `VIDEOS` al principio de `main.js` (URL de YouTube, Vimeo o .mp4). Vacío = "Video
+  próximamente". `heroDemo` y `productDemo` abren el modal compartido; `founder` y `layout` se
+  reproducen en su lugar; "Ver Layout Engine →" lleva al video del Layout Engine y lo reproduce.
+- Carrusel de eventos reales: copias reducidas en `assets/images/proof/` (las originales pesan
+  6–10 MB y quedan sin tocar).
+- Foto del founder pendiente: `assets/images/javier.jpg` (sin archivo se muestran las iniciales "JB").

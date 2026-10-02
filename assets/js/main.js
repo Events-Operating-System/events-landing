@@ -1,384 +1,397 @@
 /* ============================================================
    EventOS Landing — main.js
+   Diseño: eventos_landing_demo.html (2026-10-02). Sin frameworks.
    ============================================================ */
 
-const translations = {
-  es: {
-    nav_modulos: "Módulos",
-    nav_planes: "Planes",
-    nav_contacto: "Contacto",
-    nav_login: "Iniciar sesión",
-    nav_cta: "Empezar",
-
-    hero_badge: "Sistema operativo para productoras de eventos",
-    hero_title: "Produce eventos de clase mundial, sin caos.",
-    hero_sub: "Agentes de AI + 20 años de experiencia en producción de eventos. Un sistema operativo diseñado para tu productora.",
-    hero_btn1: "Empezar →",
-    hero_btn2: "▶ Ver demo",
-    hero_trust: "Ya usado en producciones reales con clientes reales",
-    hc_label: "Presupuesto activo",
-    hc_status: "● En producción",
-    hc_meta: "Matrimonio · 200 pax",
-    hc2_name: "EventOS AI",
-    hc2_desc: "Presupuesto generado en 8 segundos",
-
-    stat1_num: "+20",
-    stat1_label: "Años de experiencia",
-    stat2_num: "500+",
-    stat2_label: "Eventos producidos",
-    stat3_num: "5",
-    stat3_label: "Módulos integrados",
-    stat4_num: "100%",
-    stat4_label: "AI nativa en todo",
-
-    problem_eyebrow: "01 — EL PROBLEMA",
-    problem_h2: "Los eventos mueven millones de dólares al año y se gestionan por WhatsApp, sheets, PDFs y hojas sueltas — sin aprovechar la data.",
-    prob1_title: "Sin sistema central",
-    prob1_desc: "Todo fragmentado en herramientas distintas. Sin visión unificada de tus operaciones.",
-    prob2_title: "Presupuestos manuales",
-    prob2_desc: "Horas calculando en Excel, errores costosos, versiones desactualizadas compartidas por correo.",
-    prob3_title: "Cero visibilidad",
-    prob3_desc: "No sabes el estado real de tu evento en tiempo real. Las decisiones se toman a ciegas.",
-
-    solution_eyebrow: "02 — LA SOLUCIÓN",
-    solution_h2: "EventOS centraliza todo. Ventas, presupuestos, layouts, inventario y operaciones — en un solo sistema nativo de AI.",
-    mod1_name: "Ventas",
-    mod1_desc: "Pipeline de ventas con precios calculados por AI. Cotizaciones en minutos, no en horas.",
-    mod2_name: "Eventos",
-    mod2_desc: "Hoja de trabajo con 36 partidas por evento. Control total de cada detalle operativo.",
-    mod3_name: "Inventarios",
-    mod3_desc: "Control de activos propios, arrendados y consumibles. Sin pérdidas, sin sorpresas.",
-    mod4_name: "Layout Engine",
-    mod4_desc: "Editor 2D de planos de venue con export PDF. Diseña antes de producir.",
-    mod5_name: "Agentes AI",
-    mod5_desc: "Captura leads, califica prospectos y genera cotizaciones automáticamente. 24/7.",
-    mod6_name: "Multi-tenant",
-    mod6_desc: "Cada productora con su espacio aislado y seguro. Escala sin límites.",
-
-    galeria_eyebrow: "Eventos reales",
-    galeria_h2: "Más de 20 años produciendo eventos de clase mundial",
-    galeria_caption: "Cada evento producido con el mismo sistema que hoy está disponible para tu productora.",
-
-    layout_eyebrow: "Layout Engine",
-    layout_h2: "Diseña el venue antes de producirlo",
-    layout_desc: "Editor 2D profesional. Planos con medidas reales, distribución de mobiliario y zonas. Export PDF listo para el equipo.",
-    layout_f1: "Canvas interactivo con 40+ assets",
-    layout_f2: "Medidas reales escala 1/100",
-    layout_f3: "Export PDF con cajetín técnico",
-    layout_f4: "Compartible con todo el equipo",
-    layout_btn: "Ver Layout Engine →",
-    layout_badge: "EventOS Layout Engine · Esc. 1/100",
-
-    cred_eyebrow: "Por qué EventOS",
-    cred_h2: "Construido desde adentro de la industria",
-    cred_text: "No somos una empresa de software que descubrió los eventos. Somos un equipo con más de 20 años produciendo eventos de clase mundial en Lima y el Perú. Sabemos el caos porque lo vivimos. EventOS es el sistema que siempre necesitamos y que no existía.",
-    cred_s1_label: "Años",
-    cred_s2_label: "Eventos",
-    cred_s3_label: "Pax por evento",
-
-    agente_name: "EventOS AI",
-    agente_msg: "Hola, soy el asistente de EventOS. ¿Qué tipo de evento produces? Te muestro el plan ideal para ti.",
-    pill1: "Eventos sociales",
-    pill2: "Corporativos",
-    pill3: "Local de eventos",
-    pill4: "Ver todos los planes",
-
-    planes_eyebrow: "Planes",
-    planes_h2: "Simple. Sin sorpresas.",
-    plan_period: "/mes",
-    plan_btn: "Elegir plan",
-    plan1_name: "Plan 1",
-    plan1_annual: "o US$ 700 al año",
-    plan1_f1: "Módulos esenciales",
-    plan1_f2: "1 colaborador",
-    plan1_f3: "100 productos de inventario",
-    plan1_f4: "20 clientes en portal",
-    plan1_f5: "5 GB de almacenamiento",
-    plan2_name: "Plan 2",
-    plan2_badge: "Más popular",
-    plan2_annual: "o US$ 1.000 al año",
-    plan2_f1: "Módulos avanzados",
-    plan2_f2: "6 colaboradores",
-    plan2_f3: "500 productos de inventario",
-    plan2_f4: "50 clientes en portal",
-    plan2_f5: "20 GB de almacenamiento",
-    plan2_f6: "Incluye Agentes AI",
-    plan3_name: "Plan 3",
-    plan3_annual: "o US$ 2.000 al año",
-    plan3_f1: "Todos los módulos",
-    plan3_f2: "10 colaboradores",
-    plan3_f3: "1.000 productos de inventario",
-    plan3_f4: "100 clientes en portal",
-    plan3_f5: "50 GB de almacenamiento",
-    plan3_f6: "Incluye Agentes AI",
-
-    footer_modulos: "Módulos",
-    footer_planes: "Planes",
-    footer_contacto: "Contacto",
-    footer_terms: "Términos",
-    footer_privacy: "Privacidad",
-    footer_cookies: "Cookies",
-    footer_ai: "Uso de IA",
-    footer_copy: "© 2026 EventOS — operado por JBD Investment Corp Inc.",
-  },
-
-  en: {
-    nav_modulos: "Modules",
-    nav_planes: "Plans",
-    nav_contacto: "Contact",
-    nav_login: "Sign in",
-    nav_cta: "Get started",
-
-    hero_badge: "Operating system for event production companies",
-    hero_title: "Produce world-class events, without the chaos.",
-    hero_sub: "AI agents + 20 years of event production expertise. One operating system built for your company.",
-    hero_btn1: "Get started →",
-    hero_btn2: "▶ Watch demo",
-    hero_trust: "Already used in real productions with real clients",
-    hc_label: "Active budget",
-    hc_status: "● In production",
-    hc_meta: "Wedding · 200 pax",
-    hc2_name: "EventOS AI",
-    hc2_desc: "Budget generated in 8 seconds",
-
-    stat1_num: "+20",
-    stat1_label: "Years of experience",
-    stat2_num: "500+",
-    stat2_label: "Events produced",
-    stat3_num: "5",
-    stat3_label: "Integrated modules",
-    stat4_num: "100%",
-    stat4_label: "AI-native throughout",
-
-    problem_eyebrow: "01 — THE PROBLEM",
-    problem_h2: "Events move billions of dollars a year and are managed through WhatsApp, spreadsheets, PDFs and loose papers — without leveraging the data.",
-    prob1_title: "No central system",
-    prob1_desc: "Everything fragmented across different tools. No unified view of your operations.",
-    prob2_title: "Manual budgets",
-    prob2_desc: "Hours in Excel, costly mistakes, outdated versions shared via email.",
-    prob3_title: "Zero visibility",
-    prob3_desc: "You don't know the real-time status of your event. Decisions made in the dark.",
-
-    solution_eyebrow: "02 — THE SOLUTION",
-    solution_h2: "EventOS centralizes everything. Sales, budgets, layouts, inventory and operations — in one AI-native system.",
-    mod1_name: "Sales",
-    mod1_desc: "Sales pipeline with AI-calculated pricing. Quotes in minutes, not hours.",
-    mod2_name: "Events",
-    mod2_desc: "Work sheet with 36 line items per event. Total control of every operational detail.",
-    mod3_name: "Inventory",
-    mod3_desc: "Track owned, rented and consumable assets. No losses, no surprises.",
-    mod4_name: "Layout Engine",
-    mod4_desc: "2D venue floor plan editor with PDF export. Design before you produce.",
-    mod5_name: "AI Agents",
-    mod5_desc: "Capture leads, qualify prospects and generate quotes automatically. 24/7.",
-    mod6_name: "Multi-tenant",
-    mod6_desc: "Each company with their own isolated, secure space. Scale without limits.",
-
-    galeria_eyebrow: "Real events",
-    galeria_h2: "20+ years producing world-class events",
-    galeria_caption: "Every event produced with the same system that is now available for your company.",
-
-    layout_eyebrow: "Layout Engine",
-    layout_h2: "Design the venue before you produce it",
-    layout_desc: "Professional 2D editor. Floor plans with real measurements, furniture and zone distribution. PDF export ready for your team.",
-    layout_f1: "Interactive canvas with 40+ assets",
-    layout_f2: "Real measurements at 1/100 scale",
-    layout_f3: "PDF export with technical title block",
-    layout_f4: "Shareable with the entire team",
-    layout_btn: "See Layout Engine →",
-    layout_badge: "EventOS Layout Engine · Scale 1/100",
-
-    cred_eyebrow: "Why EventOS",
-    cred_h2: "Built from inside the industry",
-    cred_text: "We are not a software company that discovered events. We are a team with 20+ years producing world-class events in Lima and Peru. We know the chaos because we lived it. EventOS is the system we always needed and that didn't exist.",
-    cred_s1_label: "Years",
-    cred_s2_label: "Events",
-    cred_s3_label: "Pax per event",
-
-    agente_name: "EventOS AI",
-    agente_msg: "Hi, I'm the EventOS assistant. What type of event do you produce? I'll show you the ideal plan for you.",
-    pill1: "Social events",
-    pill2: "Corporate",
-    pill3: "Event venue",
-    pill4: "See all plans",
-
-    planes_eyebrow: "Plans",
-    planes_h2: "Simple. No surprises.",
-    plan_period: "/month",
-    plan_btn: "Choose plan",
-    plan1_name: "Plan 1",
-    plan1_annual: "or US$700 per year",
-    plan1_f1: "Essential modules",
-    plan1_f2: "1 collaborator",
-    plan1_f3: "100 inventory products",
-    plan1_f4: "20 portal clients",
-    plan1_f5: "5 GB of storage",
-    plan2_name: "Plan 2",
-    plan2_badge: "Most popular",
-    plan2_annual: "or US$1,000 per year",
-    plan2_f1: "Advanced modules",
-    plan2_f2: "6 collaborators",
-    plan2_f3: "500 inventory products",
-    plan2_f4: "50 portal clients",
-    plan2_f5: "20 GB of storage",
-    plan2_f6: "Includes AI Agents",
-    plan3_name: "Plan 3",
-    plan3_annual: "or US$2,000 per year",
-    plan3_f1: "All modules",
-    plan3_f2: "10 collaborators",
-    plan3_f3: "1,000 inventory products",
-    plan3_f4: "100 portal clients",
-    plan3_f5: "50 GB of storage",
-    plan3_f6: "Includes AI Agents",
-
-    footer_modulos: "Modules",
-    footer_planes: "Plans",
-    footer_contacto: "Contact",
-    footer_terms: "Terms",
-    footer_privacy: "Privacy",
-    footer_cookies: "Cookies",
-    footer_ai: "AI use",
-    footer_copy: "© 2026 EventOS — operated by JBD Investment Corp Inc.",
-  }
+/* ===== VIDEOS =====
+   Cuando estén los videos, cargar acá la URL (YouTube, Vimeo o un .mp4 en
+   assets/). Vacío = placeholder "Video próximamente".
+     heroDemo     "▶ Ver demo" del hero (modal): demo general
+     productDemo  "▶ Ver demo" de La Solución (modal): producto/funcionalidad
+     founder      video del founder (inline)
+     layout       video del Layout Engine (inline; "Ver Layout Engine →" lo reproduce) */
+const VIDEOS = {
+  heroDemo: '',
+  productDemo: '',
+  founder: '',
+  layout: '',
 };
 
-let currentLang = 'es';
+/* ===== TEXTOS (ES / EN / PT) ===== */
+const translations = {
+  es: {
+    'header.sub': 'AI Operation System', 'header.cliente': 'Cliente', 'header.org': 'Mi organización',
+    'hero.badge': 'AI NATIVE EVENTS OPERATION SYSTEM',
+    'hero.title': 'La producción de tus eventos<br>ya no cabe en grupos de WhatsApp.',
+    'hero.sub': 'Ventas, presupuestos, layouts, inventarios, documentos y contratos en un solo sistema. No repartidos entre WhatsApp, Drive y spreadsheets.',
+    'hero.demo': '▶ Ver demo', 'hero.create': 'Crear mi organización',
+    'hero.quoteLabel': 'Cotización en vivo', 'hero.quoteMeta': 'Matrimonio · 200 pax',
+    'hero.quoteGen': '● generado por EventOS AI en menos de 10 segundos',
+    'stats.years': 'años', 'stats.events': 'eventos', 'stats.modules': 'módulos',
+    'problem.eyebrow': 'EL PROBLEMA',
+    'problem.title': 'Los eventos mueven millones de dólares al año y el caos operativo cada vez es más grande.',
+    'problem.c1h': 'Sin sistema central', 'problem.c1p': 'Todo fragmentado.',
+    'problem.c2h': 'Tu evento hoy vive entre WhatsApp, Drive, Excel, hojas sueltas, etc.', 'problem.c2p': 'Múltiples herramientas no conectadas.',
+    'problem.c3h': 'Cero funcionalidad operativa', 'problem.c3p': 'Sin fuente de la verdad.',
+    'solution.eyebrow': 'LA SOLUCIÓN',
+    'solution.title': 'EventOS AI Operation System centraliza toda la operación 360°: desde la venta y la creación de layouts, hasta los detalles del evento, el inventario, la operación de campo y el portal del cliente.',
+    'modules.more': 'Tocá para ver más →',
+    'mod.ventas.h': 'Ventas', 'mod.ventas.p': 'Clientes, cotizaciones y oportunidades.',
+    'mod.ventas.d': 'Pipeline de ventas con precios calculados por IA, cotizaciones en minutos.',
+    'mod.eventos.h': 'Eventos', 'mod.eventos.p': 'Planifica y administra de principio a fin.',
+    'mod.eventos.d': 'Hoja de trabajo completa con 36 partidas por evento.',
+    'mod.layouts.h': 'Layouts', 'mod.layouts.p': 'Diseña y gestiona planos de tus eventos.',
+    'mod.layouts.d': 'Editor 2D de venues, 40+ assets, export PDF escala 1/100.',
+    'mod.inventario.h': 'Inventario', 'mod.inventario.p': 'Mobiliario y equipos bajo control.',
+    'mod.inventario.d': 'Control de activos propios, arrendados y consumibles.',
+    'mod.fieldops.h': 'FieldOps', 'mod.fieldops.p': 'Coordina al equipo en sitio.',
+    'mod.fieldops.d': 'Coordinación móvil en sitio, caja chica, evidencia fotográfica.',
+    'mod.financiero.h': 'Financiero', 'mod.financiero.p': 'Gestión financiera, facturación y reportes.',
+    'mod.financiero.d': 'Facturación, cuentas por cobrar/pagar y reportes financieros.',
+    'mod.administrativo.h': 'Administrativo', 'mod.administrativo.p': 'Configuración general de la cuenta.',
+    'mod.administrativo.d': 'Configuración de la organización, roles y permisos.',
+    'mod.agentes.h': 'Agentes AI', 'mod.agentes.p': 'Automatiza tareas operativas por rol.',
+    'mod.agentes.d': 'Agentes de IA que automatizan tareas operativas por rol.',
+    'mod.portal.h': 'Portal Cliente', 'mod.portal.p': 'Tus clientes ven el estado de su evento.',
+    'mod.portal.d': 'Tus clientes ven en tiempo real el estado de su evento.',
+    'founder.eyebrow': 'CONSTRUIDO DESDE ADENTRO DE LA INDUSTRIA', 'founder.role': 'Founder, EventOS',
+    'founder.quote': '"+20 años produciendo eventos, desde reuniones pequeñas hasta producciones a gran escala. Por eso construí desde adentro el sistema que yo necesitaba, y que resuelve este dolor para toda la industria."',
+    'founder.cred1': 'Full Stack, Ciberseguridad y Transformación digital · MIT',
+    'founder.cred2': 'Subcampeón Mundial de Luta Livre Brasil 2022',
+    'founder.video': 'Video: Javier presenta EventOS',
+    'layout.title': 'Diseñá el venue antes de producirlo.',
+    'layout.f1': '✓ Canvas interactivo con 40+ assets', 'layout.f2': '✓ Medidas reales escala 1/100',
+    'layout.f3': '✓ Export PDF con cajetín técnico', 'layout.f4': '✓ Compartible con todo el equipo',
+    'layout.cta': 'Ver Layout Engine →', 'layout.video': 'Video: cómo funciona el Layout Engine',
+    'value.eyebrow': 'VALOR REAL', 'value.title': 'Mejor experiencia para tus clientes, ahorro de tiempo, mayor rentabilidad y cero caos operativo.',
+    'value.v1title': 'Presupuestos', 'value.v1before': 'antes 1 hora', 'value.v1after': 'con sistema: 10 segundos',
+    'value.v2title': 'Layouts', 'value.v2before': 'antes 1 a 2 horas', 'value.v2after': 'con sistema: creado en minutos',
+    'value.v3title': 'Inventarios y Separaciones', 'value.v3before': 'antes 1, 2 o 3 horas', 'value.v3after': 'con sistema: -5 min',
+    'value.footnote': 'SIMPLE, FÁCIL Y RÁPIDO DE IMPLEMENTAR',
+    'proof.eyebrow': 'EVENTOS REALES DE PRINCIPIO A FIN CON EVENTOS AI OPERATION SYSTEM',
+    'plans.eyebrow': 'PLANES — SIMPLE, SIN SORPRESAS', 'plans.popular': 'MÁS POPULAR', 'plans.choose': 'Elegir',
+    'plans.perMonth': '/mes', 'plans.agents': '✓ Módulo Agente AI',
+    'plans.p1.annual': 'o US$ 700 al año', 'plans.p1.f1': '✓ Módulos esenciales', 'plans.p1.f2': '✓ 1 colaborador',
+    'plans.p1.f3': '✓ 100 productos', 'plans.p1.f4': '✓ 20 clientes portal',
+    'plans.p2.annual': 'o US$ 1.000 al año', 'plans.p2.f1': '✓ Módulos avanzados', 'plans.p2.f2': '✓ 6 colaboradores',
+    'plans.p2.f3': '✓ 500 productos', 'plans.p2.f4': '✓ 50 clientes portal',
+    'plans.p3.annual': 'o US$ 2.000 al año', 'plans.p3.f1': '✓ Todos los módulos', 'plans.p3.f2': '✓ 10 colaboradores',
+    'plans.p3.f3': '✓ 1.000 productos', 'plans.p3.f4': '✓ 100 clientes portal',
+    'footer.terms': 'Términos', 'footer.privacy': 'Privacidad', 'footer.cookies': 'Cookies', 'footer.ai': 'Uso de IA',
+    'footer.copy': '© 2026 EventOS — operado por JBD Investment Corp Inc.',
+    'video.soonTitle': 'Video próximamente', 'video.soonSub': 'Estamos terminando este video.',
+    'video.close': 'Cerrar',
+  },
+  en: {
+    'header.sub': 'AI Operation System', 'header.cliente': 'Client', 'header.org': 'My organization',
+    'hero.badge': 'AI NATIVE EVENTS OPERATION SYSTEM',
+    'hero.title': 'Your event production<br>no longer fits in a WhatsApp group.',
+    'hero.sub': 'Sales, budgets, layouts, inventory, documents and contracts in one system. Not spread across WhatsApp, Drive and spreadsheets.',
+    'hero.demo': '▶ Watch demo', 'hero.create': 'Create my organization',
+    'hero.quoteLabel': 'Live quote', 'hero.quoteMeta': 'Wedding · 200 pax',
+    'hero.quoteGen': '● generated by EventOS AI in under 10 seconds',
+    'stats.years': 'years', 'stats.events': 'events', 'stats.modules': 'modules',
+    'problem.eyebrow': 'THE PROBLEM',
+    'problem.title': 'Events move millions of dollars a year, and operational chaos keeps getting bigger.',
+    'problem.c1h': 'No central system', 'problem.c1p': 'Everything fragmented.',
+    'problem.c2h': 'Your event today lives between WhatsApp, Drive, Excel, loose sheets, etc.', 'problem.c2p': 'Multiple disconnected tools.',
+    'problem.c3h': 'Zero operational functionality', 'problem.c3p': 'No single source of truth.',
+    'solution.eyebrow': 'THE SOLUTION',
+    'solution.title': 'EventOS AI Operation System centralizes the full 360° operation: from sales and layout design, to event details, inventory, field operations and the client portal.',
+    'modules.more': 'Tap to see more →',
+    'mod.ventas.h': 'Sales', 'mod.ventas.p': 'Clients, quotes and opportunities.',
+    'mod.ventas.d': 'Sales pipeline with AI-calculated pricing, quotes in minutes.',
+    'mod.eventos.h': 'Events', 'mod.eventos.p': 'Plan and manage from start to finish.',
+    'mod.eventos.d': 'Complete worksheet with 36 line items per event.',
+    'mod.layouts.h': 'Layouts', 'mod.layouts.p': 'Design and manage your event floor plans.',
+    'mod.layouts.d': '2D venue editor, 40+ assets, PDF export at 1:100 scale.',
+    'mod.inventario.h': 'Inventory', 'mod.inventario.p': 'Furniture and equipment under control.',
+    'mod.inventario.d': 'Tracking of owned, rented and consumable assets.',
+    'mod.fieldops.h': 'FieldOps', 'mod.fieldops.p': 'Coordinate your on-site team.',
+    'mod.fieldops.d': 'Mobile on-site coordination, petty cash, photo evidence.',
+    'mod.financiero.h': 'Finance', 'mod.financiero.p': 'Financial management, invoicing and reports.',
+    'mod.financiero.d': 'Invoicing, accounts receivable/payable and financial reports.',
+    'mod.administrativo.h': 'Administration', 'mod.administrativo.p': 'General account settings.',
+    'mod.administrativo.d': 'Organization settings, roles and permissions.',
+    'mod.agentes.h': 'AI Agents', 'mod.agentes.p': 'Automate operational tasks by role.',
+    'mod.agentes.d': 'AI agents that automate operational tasks by role.',
+    'mod.portal.h': 'Client Portal', 'mod.portal.p': 'Your clients see the status of their event.',
+    'mod.portal.d': 'Your clients see the status of their event in real time.',
+    'founder.eyebrow': 'BUILT FROM INSIDE THE INDUSTRY', 'founder.role': 'Founder, EventOS',
+    'founder.quote': '"20+ years producing events, from small gatherings to large-scale productions. That\'s why I built from the inside the system I needed, one that solves this pain for the whole industry."',
+    'founder.cred1': 'Full Stack, Cybersecurity and Digital Transformation · MIT',
+    'founder.cred2': 'Luta Livre World Championship runner-up, Brazil 2022',
+    'founder.video': 'Video: Javier introduces EventOS',
+    'layout.title': 'Design the venue before you produce it.',
+    'layout.f1': '✓ Interactive canvas with 40+ assets', 'layout.f2': '✓ Real measurements at 1:100 scale',
+    'layout.f3': '✓ PDF export with technical title block', 'layout.f4': '✓ Shareable with the whole team',
+    'layout.cta': 'See Layout Engine →', 'layout.video': 'Video: how the Layout Engine works',
+    'value.eyebrow': 'REAL VALUE', 'value.title': 'Better experience for your clients, time saved, higher profitability, and zero operational chaos.',
+    'value.v1title': 'Quotes', 'value.v1before': 'before 1 hour', 'value.v1after': 'with system: 10 seconds',
+    'value.v2title': 'Layouts', 'value.v2before': 'before 1 to 2 hours', 'value.v2after': 'with system: ready in minutes',
+    'value.v3title': 'Inventory & Allocations', 'value.v3before': 'before 1, 2 or 3 hours', 'value.v3after': 'with system: -5 min',
+    'value.footnote': 'SIMPLE, EASY AND FAST TO IMPLEMENT',
+    'proof.eyebrow': 'REAL EVENTS FROM START TO FINISH WITH EVENTOS AI OPERATION SYSTEM',
+    'plans.eyebrow': 'PLANS — SIMPLE, NO SURPRISES', 'plans.popular': 'MOST POPULAR', 'plans.choose': 'Choose',
+    'plans.perMonth': '/month', 'plans.agents': '✓ AI Agent module',
+    'plans.p1.annual': 'or US$700 per year', 'plans.p1.f1': '✓ Essential modules', 'plans.p1.f2': '✓ 1 collaborator',
+    'plans.p1.f3': '✓ 100 products', 'plans.p1.f4': '✓ 20 portal clients',
+    'plans.p2.annual': 'or US$1,000 per year', 'plans.p2.f1': '✓ Advanced modules', 'plans.p2.f2': '✓ 6 collaborators',
+    'plans.p2.f3': '✓ 500 products', 'plans.p2.f4': '✓ 50 portal clients',
+    'plans.p3.annual': 'or US$2,000 per year', 'plans.p3.f1': '✓ All modules', 'plans.p3.f2': '✓ 10 collaborators',
+    'plans.p3.f3': '✓ 1,000 products', 'plans.p3.f4': '✓ 100 portal clients',
+    'footer.terms': 'Terms', 'footer.privacy': 'Privacy', 'footer.cookies': 'Cookies', 'footer.ai': 'AI Use',
+    'footer.copy': '© 2026 EventOS — operated by JBD Investment Corp Inc.',
+    'video.soonTitle': 'Video coming soon', 'video.soonSub': 'We are finishing this video.',
+    'video.close': 'Close',
+  },
+  pt: {
+    'header.sub': 'AI Operation System', 'header.cliente': 'Cliente', 'header.org': 'Minha organização',
+    'hero.badge': 'AI NATIVE EVENTS OPERATION SYSTEM',
+    'hero.title': 'A produção dos seus eventos<br>já não cabe em um grupo de WhatsApp.',
+    'hero.sub': 'Vendas, orçamentos, layouts, inventário, documentos e contratos em um só sistema. Não espalhados entre WhatsApp, Drive e planilhas.',
+    'hero.demo': '▶ Ver demo', 'hero.create': 'Criar minha organização',
+    'hero.quoteLabel': 'Orçamento ao vivo', 'hero.quoteMeta': 'Casamento · 200 pax',
+    'hero.quoteGen': '● gerado pelo EventOS AI em menos de 10 segundos',
+    'stats.years': 'anos', 'stats.events': 'eventos', 'stats.modules': 'módulos',
+    'problem.eyebrow': 'O PROBLEMA',
+    'problem.title': 'Os eventos movimentam milhões de dólares por ano e o caos operacional só cresce.',
+    'problem.c1h': 'Sem sistema central', 'problem.c1p': 'Tudo fragmentado.',
+    'problem.c2h': 'Seu evento hoje vive entre WhatsApp, Drive, Excel, planilhas soltas, etc.', 'problem.c2p': 'Várias ferramentas desconectadas.',
+    'problem.c3h': 'Zero funcionalidade operacional', 'problem.c3p': 'Sem fonte única da verdade.',
+    'solution.eyebrow': 'A SOLUÇÃO',
+    'solution.title': 'O EventOS AI Operation System centraliza toda a operação 360°: da venda e criação de layouts, até os detalhes do evento, o inventário, a operação de campo e o portal do cliente.',
+    'modules.more': 'Toque para ver mais →',
+    'mod.ventas.h': 'Vendas', 'mod.ventas.p': 'Clientes, orçamentos e oportunidades.',
+    'mod.ventas.d': 'Pipeline de vendas com preços calculados por IA, orçamentos em minutos.',
+    'mod.eventos.h': 'Eventos', 'mod.eventos.p': 'Planeje e administre do início ao fim.',
+    'mod.eventos.d': 'Planilha de trabalho completa com 36 itens por evento.',
+    'mod.layouts.h': 'Layouts', 'mod.layouts.p': 'Desenhe e gerencie as plantas dos seus eventos.',
+    'mod.layouts.d': 'Editor 2D de venues, 40+ assets, exportação em PDF na escala 1/100.',
+    'mod.inventario.h': 'Inventário', 'mod.inventario.p': 'Mobiliário e equipamentos sob controle.',
+    'mod.inventario.d': 'Controle de ativos próprios, alugados e consumíveis.',
+    'mod.fieldops.h': 'FieldOps', 'mod.fieldops.p': 'Coordene a equipe no local.',
+    'mod.fieldops.d': 'Coordenação móvel no local, caixa pequeno, evidência fotográfica.',
+    'mod.financiero.h': 'Financeiro', 'mod.financiero.p': 'Gestão financeira, faturamento e relatórios.',
+    'mod.financiero.d': 'Faturamento, contas a receber/pagar e relatórios financeiros.',
+    'mod.administrativo.h': 'Administrativo', 'mod.administrativo.p': 'Configuração geral da conta.',
+    'mod.administrativo.d': 'Configuração da organização, funções e permissões.',
+    'mod.agentes.h': 'Agentes AI', 'mod.agentes.p': 'Automatize tarefas operacionais por função.',
+    'mod.agentes.d': 'Agentes de IA que automatizam tarefas operacionais por função.',
+    'mod.portal.h': 'Portal do Cliente', 'mod.portal.p': 'Seus clientes veem o status do evento.',
+    'mod.portal.d': 'Seus clientes veem em tempo real o status do evento.',
+    'founder.eyebrow': 'CONSTRUÍDO DE DENTRO DA INDÚSTRIA', 'founder.role': 'Founder, EventOS',
+    'founder.quote': '"+20 anos produzindo eventos, de pequenas reuniões a produções em grande escala. Por isso construí de dentro o sistema que eu precisava, e que resolve essa dor para toda a indústria."',
+    'founder.cred1': 'Full Stack, Cibersegurança e Transformação Digital · MIT',
+    'founder.cred2': 'Vice-campeão Mundial de Luta Livre Brasil 2022',
+    'founder.video': 'Vídeo: Javier apresenta o EventOS',
+    'layout.title': 'Desenhe o venue antes de produzi-lo.',
+    'layout.f1': '✓ Canvas interativo com 40+ assets', 'layout.f2': '✓ Medidas reais na escala 1/100',
+    'layout.f3': '✓ Exportação em PDF com carimbo técnico', 'layout.f4': '✓ Compartilhável com toda a equipe',
+    'layout.cta': 'Ver Layout Engine →', 'layout.video': 'Vídeo: como funciona o Layout Engine',
+    'value.eyebrow': 'VALOR REAL', 'value.title': 'Melhor experiência para seus clientes, economia de tempo, mais rentabilidade e zero caos operacional.',
+    'value.v1title': 'Orçamentos', 'value.v1before': 'antes 1 hora', 'value.v1after': 'com sistema: 10 segundos',
+    'value.v2title': 'Layouts', 'value.v2before': 'antes 1 a 2 horas', 'value.v2after': 'com sistema: pronto em minutos',
+    'value.v3title': 'Inventário e Separações', 'value.v3before': 'antes 1, 2 ou 3 horas', 'value.v3after': 'com sistema: -5 min',
+    'value.footnote': 'SIMPLES, FÁCIL E RÁPIDO DE IMPLEMENTAR',
+    'proof.eyebrow': 'EVENTOS REAIS DO INÍCIO AO FIM COM EVENTOS AI OPERATION SYSTEM',
+    'plans.eyebrow': 'PLANOS — SIMPLES, SEM SURPRESAS', 'plans.popular': 'MAIS POPULAR', 'plans.choose': 'Escolher',
+    'plans.perMonth': '/mês', 'plans.agents': '✓ Módulo Agente AI',
+    'plans.p1.annual': 'ou US$ 700 por ano', 'plans.p1.f1': '✓ Módulos essenciais', 'plans.p1.f2': '✓ 1 colaborador',
+    'plans.p1.f3': '✓ 100 produtos', 'plans.p1.f4': '✓ 20 clientes no portal',
+    'plans.p2.annual': 'ou US$ 1.000 por ano', 'plans.p2.f1': '✓ Módulos avançados', 'plans.p2.f2': '✓ 6 colaboradores',
+    'plans.p2.f3': '✓ 500 produtos', 'plans.p2.f4': '✓ 50 clientes no portal',
+    'plans.p3.annual': 'ou US$ 2.000 por ano', 'plans.p3.f1': '✓ Todos os módulos', 'plans.p3.f2': '✓ 10 colaboradores',
+    'plans.p3.f3': '✓ 1.000 produtos', 'plans.p3.f4': '✓ 100 clientes no portal',
+    'footer.terms': 'Termos', 'footer.privacy': 'Privacidade', 'footer.cookies': 'Cookies', 'footer.ai': 'Uso de IA',
+    'footer.copy': '© 2026 EventOS — operado por JBD Investment Corp Inc.',
+    'video.soonTitle': 'Vídeo em breve', 'video.soonSub': 'Estamos finalizando este vídeo.',
+    'video.close': 'Fechar',
+  },
+};
 
 // Documentos legales (legal/build.mjs): mismo documento, nombre de archivo por idioma.
 const legalSlugs = {
   es: { terms: 'terminos', privacy: 'privacidad', cookies: 'cookies', ai: 'ia' },
   en: { terms: 'terms', privacy: 'privacy', cookies: 'cookies', ai: 'ai' },
+  pt: { terms: 'termos', privacy: 'privacidade', cookies: 'cookies', ai: 'ia' },
 };
 
+const LANG_KEY = 'eventos.landingLang';
+let currentLang = 'es';
+let openModule = null;
+
+const t = (key) => translations[currentLang][key] ?? translations.es[key] ?? '';
+
+function initialLang() {
+  try {
+    const saved = localStorage.getItem(LANG_KEY);
+    if (saved && translations[saved]) return saved;
+  } catch (e) { /* sin storage: se usa el navegador */ }
+  const browser = (navigator.language || 'es').slice(0, 2).toLowerCase();
+  return translations[browser] ? browser : 'es';
+}
+
 function setLang(lang) {
-  currentLang = lang;
-  const t = translations[lang];
+  currentLang = translations[lang] ? lang : 'es';
+  try { localStorage.setItem(LANG_KEY, currentLang); } catch (e) { /* opcional */ }
 
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (t[key] !== undefined) el.textContent = t[key];
+  document.querySelectorAll('[data-i18n]').forEach((el) => {
+    const value = t(el.getAttribute('data-i18n'));
+    if (value) el.textContent = value;
   });
-
-  document.querySelectorAll('.lang-toggle button, .nav-mobile-lang button').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.lang === lang);
+  // Solo textos propios con <br> (sin datos de usuarios).
+  document.querySelectorAll('[data-i18n-html]').forEach((el) => {
+    const value = t(el.getAttribute('data-i18n-html'));
+    if (value) el.innerHTML = value;
   });
-
-  document.querySelectorAll('[data-legal]').forEach(el => {
-    el.href = `legal/${lang}/${legalSlugs[lang][el.dataset.legal]}.html`;
+  document.querySelectorAll('#langToggle button').forEach((btn) => {
+    btn.classList.toggle('active', btn.dataset.lang === currentLang);
+    btn.setAttribute('aria-pressed', String(btn.dataset.lang === currentLang));
   });
-
-  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-legal]').forEach((el) => {
+    el.href = `legal/${currentLang}/${legalSlugs[currentLang][el.dataset.legal]}.html`;
+  });
+  document.querySelectorAll('[data-close]').forEach((el) => {
+    if (el.tagName === 'BUTTON') el.setAttribute('aria-label', t('video.close'));
+  });
+  renderModuleDetails();
+  document.documentElement.lang = currentLang;
 }
 
-/* ===== NAV SCROLL ===== */
-const nav = document.querySelector('.nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 50);
-}, { passive: true });
-
-/* ===== MOBILE NAV ===== */
-const hamburger = document.querySelector('.nav-hamburger');
-const mobileNav = document.querySelector('.nav-mobile');
-
-hamburger.addEventListener('click', () => {
-  const isOpen = mobileNav.classList.toggle('open');
-  hamburger.classList.toggle('open', isOpen);
-  document.body.style.overflow = isOpen ? 'hidden' : '';
-});
-
-document.querySelectorAll('.nav-mobile a').forEach(link => {
-  link.addEventListener('click', () => {
-    mobileNav.classList.remove('open');
-    hamburger.classList.remove('open');
-    document.body.style.overflow = '';
-  });
-});
-
-/* ===== HERO SLIDER ===== */
-const slides = document.querySelectorAll('.hero-slide');
-const dots = document.querySelectorAll('.hero-dot');
-let currentSlide = 0;
-let sliderTimer;
-
-function goToSlide(n) {
-  slides[currentSlide].classList.remove('active');
-  dots[currentSlide].classList.remove('active');
-  currentSlide = (n + slides.length) % slides.length;
-  slides[currentSlide].classList.add('active');
-  dots[currentSlide].classList.add('active');
-}
-
-function startSlider() {
-  clearInterval(sliderTimer);
-  sliderTimer = setInterval(() => goToSlide(currentSlide + 1), 5000);
-}
-
-dots.forEach((dot, i) => {
-  dot.addEventListener('click', () => {
-    goToSlide(i);
-    startSlider();
-  });
-});
-
-startSlider();
-
-/* ===== MODULE CARDS — FADE IN ===== */
-const moduleCards = document.querySelectorAll('.module-card');
-const moduleObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry, idx) => {
-    if (entry.isIntersecting) {
-      const i = Array.from(moduleCards).indexOf(entry.target);
-      setTimeout(() => entry.target.classList.add('visible'), i * 90);
-      moduleObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1 });
-moduleCards.forEach(card => moduleObserver.observe(card));
-
-/* ===== ANIMATED COUNTERS ===== */
-function animateCounter(el, target, prefix, suffix) {
-  const duration = 1800;
-  const start = performance.now();
-
-  function step(now) {
-    const elapsed = Math.min((now - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - elapsed, 3);
-    const val = Math.round(target * eased);
-    el.textContent = (prefix || '') + val + (suffix || '');
-    if (elapsed < 1) requestAnimationFrame(step);
-  }
-
-  requestAnimationFrame(step);
-}
-
-const counterEls = document.querySelectorAll('[data-counter]');
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const el = entry.target;
-      animateCounter(
-        el,
-        parseFloat(el.dataset.counter),
-        el.dataset.prefix || '',
-        el.dataset.suffix || ''
-      );
-      counterObserver.unobserve(el);
-    }
-  });
-}, { threshold: 0.5 });
-counterEls.forEach(el => counterObserver.observe(el));
-
-/* ===== AI AGENT PILLS → SCROLL TO PLANES ===== */
-document.querySelectorAll('.agente-pill').forEach(pill => {
-  pill.addEventListener('click', () => {
-    document.querySelector('#planes').scrollIntoView({ behavior: 'smooth' });
-  });
-});
-
-/* ===== LANGUAGE TOGGLE ===== */
-document.querySelectorAll('[data-lang]').forEach(btn => {
+document.querySelectorAll('#langToggle button').forEach((btn) => {
   btn.addEventListener('click', () => setLang(btn.dataset.lang));
 });
 
+/* ===== MÓDULOS: tocar para ver el detalle ===== */
+function renderModuleDetails() {
+  document.querySelectorAll('.module-card').forEach((card) => {
+    const key = card.dataset.module;
+    const isOpen = key === openModule;
+    card.classList.toggle('open', isOpen);
+    card.setAttribute('aria-expanded', String(isOpen));
+    card.querySelector('.module-detail').textContent = isOpen ? t(`mod.${key}.d`) : t('modules.more');
+  });
+}
+
+document.querySelectorAll('.module-card').forEach((card) => {
+  card.addEventListener('click', () => {
+    openModule = openModule === card.dataset.module ? null : card.dataset.module;
+    renderModuleDetails();
+  });
+});
+
+/* ===== VIDEO (componente compartido por el modal y los inline) ===== */
+function youtubeId(src) {
+  const m = src.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/);
+  return m ? m[1] : null;
+}
+
+function vimeoId(src) {
+  const m = src.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+  return m ? m[1] : null;
+}
+
+// Devuelve el reproductor (con autoplay) o el placeholder "Video próximamente".
+function createVideo(key) {
+  const src = (VIDEOS[key] || '').trim();
+  if (!src) {
+    const soon = document.createElement('div');
+    soon.className = 'video-soon';
+    soon.setAttribute('role', 'status');
+    const title = document.createElement('strong');
+    title.textContent = t('video.soonTitle');
+    const sub = document.createElement('span');
+    sub.textContent = t('video.soonSub');
+    soon.append(title, sub);
+    return soon;
+  }
+  const yt = youtubeId(src);
+  const vm = vimeoId(src);
+  if (yt || vm) {
+    const iframe = document.createElement('iframe');
+    iframe.src = yt
+      ? `https://www.youtube-nocookie.com/embed/${yt}?autoplay=1&rel=0`
+      : `https://player.vimeo.com/video/${vm}?autoplay=1`;
+    iframe.title = 'Video';
+    iframe.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture';
+    iframe.allowFullscreen = true;
+    return iframe;
+  }
+  const video = document.createElement('video');
+  video.src = src;
+  video.controls = true;
+  video.autoplay = true;
+  video.playsInline = true;
+  return video;
+}
+
+/* Modal (hero "Ver demo" → heroDemo, Solución "Ver demo" → productDemo). */
+const modal = document.getElementById('videoModal');
+const modalFrame = document.getElementById('videoModalFrame');
+let modalReturnFocus = null;
+
+function openVideoModal(key) {
+  modalReturnFocus = document.activeElement;
+  modalFrame.replaceChildren(createVideo(key));
+  modal.hidden = false;
+  document.body.classList.add('modal-open');
+  modal.querySelector('.video-modal__close').focus();
+}
+
+function closeVideoModal() {
+  if (modal.hidden) return;
+  modal.hidden = true;
+  modalFrame.replaceChildren(); // corta la reproducción
+  document.body.classList.remove('modal-open');
+  if (modalReturnFocus) modalReturnFocus.focus();
+}
+
+document.querySelectorAll('[data-video-modal]').forEach((btn) => {
+  btn.addEventListener('click', () => openVideoModal(btn.dataset.videoModal));
+});
+modal.querySelectorAll('[data-close]').forEach((el) => el.addEventListener('click', closeVideoModal));
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeVideoModal();
+  // El foco queda dentro del modal: el único control es "Cerrar".
+  if (event.key === 'Tab' && !modal.hidden) {
+    event.preventDefault();
+    modal.querySelector('.video-modal__close').focus();
+  }
+});
+
+/* Inline (founder, Layout Engine): se reproduce en el lugar del placeholder. */
+function playInline(container) {
+  if (container.dataset.playing === 'true') return;
+  container.dataset.playing = 'true';
+  container.replaceChildren(createVideo(container.dataset.videoInline));
+}
+
+document.querySelectorAll('[data-video-inline]').forEach((container) => {
+  container.querySelector('.video-play')?.addEventListener('click', () => playInline(container));
+});
+
+/* "Ver Layout Engine →": lleva al video del Layout Engine y lo reproduce. */
+const layoutCtaBtn = document.getElementById('layoutCtaBtn');
+const layoutVideo = document.getElementById('layoutVideo');
+if (layoutCtaBtn && layoutVideo) {
+  layoutCtaBtn.addEventListener('click', () => {
+    layoutVideo.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    playInline(layoutVideo);
+    layoutVideo.classList.add('is-highlighted');
+    setTimeout(() => layoutVideo.classList.remove('is-highlighted'), 900);
+  });
+}
+
+/* ===== CARRUSEL: se duplica la pista para que el loop no tenga corte ===== */
+const proofTrack = document.getElementById('proofTrack');
+if (proofTrack) {
+  Array.from(proofTrack.children).forEach((img) => {
+    const clone = img.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    proofTrack.appendChild(clone);
+  });
+}
+
 /* ===== INIT ===== */
-setLang('es');
+setLang(initialLang());
