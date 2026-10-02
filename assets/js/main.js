@@ -393,5 +393,44 @@ if (proofTrack) {
   });
 }
 
+/* ===== STATS: conteo animado al entrar en pantalla =====
+   Una sola vez por carga (unobserve después del primer disparo). Los números
+   no dependen del idioma: solo cambia la etiqueta de abajo (data-i18n). El
+   HTML trae el valor final, así sin JS (o con movimiento reducido) se ve igual.
+   data-group: separador de miles con coma también durante el conteo. */
+const STATS_DURATION_MS = 1800;
+const easeOutCubic = (x) => 1 - Math.pow(1 - x, 3);
+
+function formatStat(el, value) {
+  const n = Math.round(value);
+  const digits = el.hasAttribute('data-group') ? n.toLocaleString('en-US') : String(n);
+  return digits + (el.dataset.suffix || '');
+}
+
+function animateStat(el) {
+  const target = Number(el.dataset.count);
+  const start = performance.now();
+  function frame(now) {
+    const progress = Math.min((now - start) / STATS_DURATION_MS, 1);
+    el.textContent = formatStat(el, target * easeOutCubic(progress));
+    if (progress < 1) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+
+const statsSection = document.getElementById('stats');
+const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (statsSection && 'IntersectionObserver' in window && !reduceMotion) {
+  const counters = statsSection.querySelectorAll('[data-count]');
+  counters.forEach((el) => { el.textContent = formatStat(el, 0); });
+  const statsObserver = new IntersectionObserver((entries, observer) => {
+    if (!entries.some((entry) => entry.isIntersecting)) return;
+    observer.unobserve(statsSection);
+    observer.disconnect();
+    counters.forEach(animateStat);
+  }, { threshold: 0.4 });
+  statsObserver.observe(statsSection);
+}
+
 /* ===== INIT ===== */
 setLang(initialLang());
