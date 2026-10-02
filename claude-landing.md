@@ -79,7 +79,7 @@ docs: add README and claude-landing notes
 ## Rediseño (2026-10-02)
 
 - `index.html` + `assets/css/landing.css` + `assets/js/main.js` implementan `eventos_landing_demo.html`
-  (referencia visual, queda en la raíz). Se conservó lo anterior: `legal/` y `assets/css/style.css`
+  (referencia visual; se sacó del repo al publicar). Se conservó lo anterior: `legal/` y `assets/css/style.css`
   (lo usan las páginas legales), sin Google Analytics, planes en USD con su precio anual, sin "gratis",
   copyright de JBD Investment Corp Inc.
 - i18n ES/EN/PT: `data-i18n` (texto) y `data-i18n-html` (solo títulos con `<br>`) contra
@@ -94,4 +94,4 @@ docs: add README and claude-landing notes
   reproducen en su lugar; "Ver Layout Engine →" lleva al video del Layout Engine y lo reproduce.
 - Carrusel de eventos reales: copias reducidas en `assets/images/proof/` (las originales pesan
   6–10 MB y quedan sin tocar).
-- Foto del founder pendiente: `assets/images/javier.jpg` (sin archivo se muestran las iniciales "JB").
+- Foto del founder: `assets/images/javier.jpg` (120×120; sin archivo se muestran las iniciales "JB").

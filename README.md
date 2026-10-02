@@ -16,7 +16,6 @@ Landing page de alto impacto para EventOS, el sistema operativo AI para producto
 ```
 events-landing/
 ├── index.html                 # landing (diseño de eventos_landing_demo.html)
-├── eventos_landing_demo.html  # referencia visual
 ├── legal/                     # Términos, Privacidad, Cookies, IA (ES/EN/PT, v1)
 ├── assets/
 │   ├── css/
