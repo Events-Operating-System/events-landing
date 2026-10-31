@@ -17,9 +17,9 @@
    El título visible de cada uno es la clave 'video.title.<clave>'. */
 const VIDEO_DIR = 'assets/videos/';
 const VIDEOS = {
-  heroDemo: '',
+  heroDemo: 'demo',
   productDemo: 'dashboard',
-  founder: '',
+  founder: 'founder',
   layout: 'layout',
 };
 const SUBTITLE_LANGS = { es: 'Español', en: 'English', pt: 'Português' };

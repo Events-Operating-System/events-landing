@@ -89,8 +89,9 @@ docs: add README and claude-landing notes
   Identity; "Crear mi organización" → `#planes`; "Elegir" →
   `eventos-administracion-frontend.vercel.app/?plan=N` (preselección en "Crear tu organización", sin
   Price IDs); LinkedIn del founder y de la empresa, Instagram y YouTube.
-- Videos: objeto `VIDEOS` al principio de `main.js` (URL de YouTube, Vimeo o .mp4). Vacío = "Video
-  próximamente". `heroDemo` y `productDemo` abren el modal compartido; `founder` y `layout` se
+- Videos: objeto `VIDEOS` al principio de `main.js` (nombre base de los archivos en `assets/videos/`).
+  Vacío = "Video próximamente". Hoy: `heroDemo` = demo, `productDemo` = dashboard, `founder` =
+  presentación de Javier, `layout` = Layout Engine. `heroDemo` y `productDemo` abren el modal compartido; `founder` y `layout` se
   reproducen en su lugar; "Ver Layout Engine →" lleva al video del Layout Engine y lo reproduce.
 - Carrusel de eventos reales: copias reducidas en `assets/images/proof/` (las originales pesan
   6–10 MB y quedan sin tocar).
