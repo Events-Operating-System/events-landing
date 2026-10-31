@@ -23,6 +23,7 @@ events-landing/
 │   │   └── style.css          # páginas legales
 │   ├── js/
 │   │   └── main.js            # i18n ES/EN/PT, videos, enlaces
+│   ├── videos/                # <nombre>-1080.mp4 / -720.mp4, -poster.webp/.jpg, -es/-en/-pt.vtt
 │   └── images/
 │       ├── hero-1.jpg
 │       ├── hero-2.jpg

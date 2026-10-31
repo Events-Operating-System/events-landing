@@ -4,18 +4,26 @@
    ============================================================ */
 
 /* ===== VIDEOS =====
-   Cuando estén los videos, cargar acá la URL (YouTube, Vimeo o un .mp4 en
-   assets/). Vacío = placeholder "Video próximamente".
+   Servidos desde la misma landing (assets/videos/), sin servicios externos.
+   Cada video es un nombre base; los archivos siguen esta convención:
+     <nombre>-1080.mp4 / <nombre>-720.mp4   (720p en pantallas ≤ 767 px)
+     <nombre>-poster.webp / <nombre>-poster.jpg (respaldo)
+     <nombre>-es.vtt / -en.vtt / -pt.vtt    (subtítulos; audio en español)
+   Vacío = placeholder "Video próximamente".
      heroDemo     "▶ Ver demo" del hero (modal): demo general
-     productDemo  "▶ Ver demo" de La Solución (modal): producto/funcionalidad
+     productDemo  "▶ Ver demo" de La Solución (modal): recorrido del dashboard
      founder      video del founder (inline)
-     layout       video del Layout Engine (inline; "Ver Layout Engine →" lo reproduce) */
+     layout       video del Layout Engine (inline; "Ver Layout Engine →" lo reproduce)
+   El título visible de cada uno es la clave 'video.title.<clave>'. */
+const VIDEO_DIR = 'assets/videos/';
 const VIDEOS = {
   heroDemo: '',
-  productDemo: '',
+  productDemo: 'dashboard',
   founder: '',
-  layout: '',
+  layout: 'layout',
 };
+const SUBTITLE_LANGS = { es: 'Español', en: 'English', pt: 'Português' };
+const SMALL_SCREEN = '(max-width: 767px)';
 
 /* ===== TEXTOS (ES / EN / PT) ===== */
 const translations = {
@@ -35,7 +43,7 @@ const translations = {
     'problem.c3h': 'Cero funcionalidad operativa', 'problem.c3p': 'Sin fuente de la verdad.',
     'solution.eyebrow': 'LA SOLUCIÓN',
     'solution.title': 'EventOS AI Operation System centraliza toda la operación 360°: desde la venta y la creación de layouts, hasta los detalles del evento, el inventario, la operación de campo y el portal del cliente.',
-    'modules.more': 'Tocá para ver más →',
+    'modules.more': 'Toca para ver más →',
     'mod.ventas.h': 'Ventas', 'mod.ventas.p': 'Clientes, cotizaciones y oportunidades.',
     'mod.ventas.d': 'Pipeline de ventas con precios calculados por IA, cotizaciones en minutos.',
     'mod.eventos.h': 'Eventos', 'mod.eventos.p': 'Planifica y administra de principio a fin.',
@@ -58,11 +66,10 @@ const translations = {
     'founder.quote': '"+20 años produciendo eventos, desde reuniones pequeñas hasta producciones a gran escala. Por eso construí desde adentro el sistema que yo necesitaba, y que resuelve este dolor para toda la industria."',
     'founder.cred1': 'Full Stack, Ciberseguridad y Transformación digital · MIT',
     'founder.cred2': 'Subcampeón Mundial de Luta Livre Brasil 2022',
-    'founder.video': 'Video: Javier presenta EventOS',
-    'layout.title': 'Diseñá el venue antes de producirlo.',
+    'layout.title': 'Diseña el venue antes de producirlo.',
     'layout.f1': '✓ Canvas interactivo con 40+ assets', 'layout.f2': '✓ Medidas reales escala 1/100',
     'layout.f3': '✓ Export PDF con cajetín técnico', 'layout.f4': '✓ Compartible con todo el equipo',
-    'layout.cta': 'Ver Layout Engine →', 'layout.video': 'Video: cómo funciona el Layout Engine',
+    'layout.cta': 'Ver Layout Engine →',
     'value.eyebrow': 'VALOR REAL', 'value.title': 'Mejor experiencia para tus clientes, ahorro de tiempo, mayor rentabilidad y cero caos operativo.',
     'value.v1title': 'Presupuestos', 'value.v1before': 'antes 1 hora', 'value.v1after': 'con sistema: 10 segundos',
     'value.v2title': 'Layouts', 'value.v2before': 'antes 1 a 2 horas', 'value.v2after': 'con sistema: creado en minutos',
@@ -81,6 +88,10 @@ const translations = {
     'footer.copy': '© 2026 EventOS — operado por JBD Investment Corp Inc.',
     'video.soonTitle': 'Video próximamente', 'video.soonSub': 'Estamos terminando este video.',
     'video.close': 'Cerrar',
+    'video.title.heroDemo': 'Todo en un solo sistema',
+    'video.title.productDemo': 'Recorrido por el dashboard: 9 módulos',
+    'video.title.founder': 'Javier presenta EventOS',
+    'video.title.layout': 'Cómo funciona el Layout Engine',
   },
   en: {
     'header.sub': 'AI Operation System', 'header.cliente': 'Client', 'header.org': 'My organization',
@@ -121,11 +132,10 @@ const translations = {
     'founder.quote': '"20+ years producing events, from small gatherings to large-scale productions. That\'s why I built from the inside the system I needed, one that solves this pain for the whole industry."',
     'founder.cred1': 'Full Stack, Cybersecurity and Digital Transformation · MIT',
     'founder.cred2': 'Luta Livre World Championship runner-up, Brazil 2022',
-    'founder.video': 'Video: Javier introduces EventOS',
     'layout.title': 'Design the venue before you produce it.',
     'layout.f1': '✓ Interactive canvas with 40+ assets', 'layout.f2': '✓ Real measurements at 1:100 scale',
     'layout.f3': '✓ PDF export with technical title block', 'layout.f4': '✓ Shareable with the whole team',
-    'layout.cta': 'See Layout Engine →', 'layout.video': 'Video: how the Layout Engine works',
+    'layout.cta': 'See Layout Engine →',
     'value.eyebrow': 'REAL VALUE', 'value.title': 'Better experience for your clients, time saved, higher profitability, and zero operational chaos.',
     'value.v1title': 'Quotes', 'value.v1before': 'before 1 hour', 'value.v1after': 'with system: 10 seconds',
     'value.v2title': 'Layouts', 'value.v2before': 'before 1 to 2 hours', 'value.v2after': 'with system: ready in minutes',
@@ -144,6 +154,10 @@ const translations = {
     'footer.copy': '© 2026 EventOS — operated by JBD Investment Corp Inc.',
     'video.soonTitle': 'Video coming soon', 'video.soonSub': 'We are finishing this video.',
     'video.close': 'Close',
+    'video.title.heroDemo': 'Everything in one system',
+    'video.title.productDemo': 'Dashboard tour: 9 modules',
+    'video.title.founder': 'Javier introduces EventOS',
+    'video.title.layout': 'How the Layout Engine works',
   },
   pt: {
     'header.sub': 'AI Operation System', 'header.cliente': 'Cliente', 'header.org': 'Minha organização',
@@ -184,11 +198,10 @@ const translations = {
     'founder.quote': '"+20 anos produzindo eventos, de pequenas reuniões a produções em grande escala. Por isso construí de dentro o sistema que eu precisava, e que resolve essa dor para toda a indústria."',
     'founder.cred1': 'Full Stack, Cibersegurança e Transformação Digital · MIT',
     'founder.cred2': 'Vice-campeão Mundial de Luta Livre Brasil 2022',
-    'founder.video': 'Vídeo: Javier apresenta o EventOS',
     'layout.title': 'Desenhe o venue antes de produzi-lo.',
     'layout.f1': '✓ Canvas interativo com 40+ assets', 'layout.f2': '✓ Medidas reais na escala 1/100',
     'layout.f3': '✓ Exportação em PDF com carimbo técnico', 'layout.f4': '✓ Compartilhável com toda a equipe',
-    'layout.cta': 'Ver Layout Engine →', 'layout.video': 'Vídeo: como funciona o Layout Engine',
+    'layout.cta': 'Ver Layout Engine →',
     'value.eyebrow': 'VALOR REAL', 'value.title': 'Melhor experiência para seus clientes, economia de tempo, mais rentabilidade e zero caos operacional.',
     'value.v1title': 'Orçamentos', 'value.v1before': 'antes 1 hora', 'value.v1after': 'com sistema: 10 segundos',
     'value.v2title': 'Layouts', 'value.v2before': 'antes 1 a 2 horas', 'value.v2after': 'com sistema: pronto em minutos',
@@ -207,6 +220,10 @@ const translations = {
     'footer.copy': '© 2026 EventOS — operado por JBD Investment Corp Inc.',
     'video.soonTitle': 'Vídeo em breve', 'video.soonSub': 'Estamos finalizando este vídeo.',
     'video.close': 'Fechar',
+    'video.title.heroDemo': 'Tudo em um só sistema',
+    'video.title.productDemo': 'Tour pelo dashboard: 9 módulos',
+    'video.title.founder': 'Javier apresenta o EventOS',
+    'video.title.layout': 'Como funciona o Layout Engine',
   },
 };
 
@@ -256,6 +273,7 @@ function setLang(lang) {
     if (el.tagName === 'BUTTON') el.setAttribute('aria-label', t('video.close'));
   });
   renderModuleDetails();
+  syncSubtitles();
   document.documentElement.lang = currentLang;
 }
 
@@ -281,68 +299,103 @@ document.querySelectorAll('.module-card').forEach((card) => {
   });
 });
 
-/* ===== VIDEO (componente compartido por el modal y los inline) ===== */
-function youtubeId(src) {
-  const m = src.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/);
-  return m ? m[1] : null;
+/* ===== VIDEO (componente compartido por el modal y los inline) =====
+   preload="none": no se descarga nada hasta que tocan play; antes se ve la portada. */
+
+// Placeholder "Video próximamente" (videos que todavía no están).
+function createSoon() {
+  const soon = document.createElement('div');
+  soon.className = 'video-soon';
+  soon.setAttribute('role', 'status');
+  const title = document.createElement('strong');
+  title.textContent = t('video.soonTitle');
+  const sub = document.createElement('span');
+  sub.textContent = t('video.soonSub');
+  soon.append(title, sub);
+  return soon;
 }
 
-function vimeoId(src) {
-  const m = src.match(/vimeo\.com\/(?:video\/)?(\d+)/);
-  return m ? m[1] : null;
-}
-
-// Devuelve el reproductor (con autoplay) o el placeholder "Video próximamente".
+// Reproductor con portada, 720p/1080p según pantalla y subtítulos ES/EN/PT.
 function createVideo(key) {
-  const src = (VIDEOS[key] || '').trim();
-  if (!src) {
-    const soon = document.createElement('div');
-    soon.className = 'video-soon';
-    soon.setAttribute('role', 'status');
-    const title = document.createElement('strong');
-    title.textContent = t('video.soonTitle');
-    const sub = document.createElement('span');
-    sub.textContent = t('video.soonSub');
-    soon.append(title, sub);
-    return soon;
-  }
-  const yt = youtubeId(src);
-  const vm = vimeoId(src);
-  if (yt || vm) {
-    const iframe = document.createElement('iframe');
-    iframe.src = yt
-      ? `https://www.youtube-nocookie.com/embed/${yt}?autoplay=1&rel=0`
-      : `https://player.vimeo.com/video/${vm}?autoplay=1`;
-    iframe.title = 'Video';
-    iframe.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture';
-    iframe.allowFullscreen = true;
-    return iframe;
-  }
+  const name = VIDEOS[key];
+  if (!name) return createSoon();
+  const base = VIDEO_DIR + name;
+  const small = window.matchMedia && window.matchMedia(SMALL_SCREEN).matches;
+
   const video = document.createElement('video');
-  video.src = src;
+  video.className = 'landing-video';
   video.controls = true;
-  video.autoplay = true;
   video.playsInline = true;
+  video.preload = 'none';
+  video.poster = `${base}-poster.webp`;
+  video.src = `${base}-${small ? 720 : 1080}.mp4`;
+  video.dataset.titleKey = `video.title.${key}`;
+  video.setAttribute('aria-label', t(video.dataset.titleKey));
+
+  // Portada JPG si el navegador no abre WebP.
+  const probe = new Image();
+  probe.onerror = () => { video.poster = `${base}-poster.jpg`; };
+  probe.src = video.poster;
+
+  Object.entries(SUBTITLE_LANGS).forEach(([lang, label]) => {
+    const track = document.createElement('track');
+    track.kind = 'subtitles';
+    track.srclang = lang;
+    track.label = label;
+    track.src = `${base}-${lang}.vtt`;
+    if (lang === currentLang) track.default = true;
+    video.appendChild(track);
+  });
+  // Chrome activa además los subtítulos del idioma del navegador: si quedan
+  // dos visibles, se deja solo el de la landing. Si el visitante elige otro
+  // idioma o los apaga desde el reproductor, se respeta.
+  video.textTracks.addEventListener('change', () => {
+    const showing = Array.from(video.textTracks).filter((tr) => tr.mode === 'showing');
+    if (showing.length > 1) syncSubtitles(video.parentElement);
+  });
   return video;
+}
+
+// Subtítulos visibles en el idioma de la landing (se llama al cambiar ES/EN/PT).
+function syncSubtitles(root = document) {
+  root.querySelectorAll('video.landing-video').forEach((video) => {
+    Array.from(video.textTracks).forEach((track) => {
+      track.mode = track.language === currentLang ? 'showing' : 'disabled';
+    });
+    video.setAttribute('aria-label', t(video.dataset.titleKey));
+  });
+}
+
+// Algunos navegadores crean las pistas recién al insertar el <video>.
+function mountVideo(container, key) {
+  const el = createVideo(key);
+  container.replaceChildren(el);
+  if (el.tagName === 'VIDEO') syncSubtitles(container);
+  return el;
 }
 
 /* Modal (hero "Ver demo" → heroDemo, Solución "Ver demo" → productDemo). */
 const modal = document.getElementById('videoModal');
 const modalFrame = document.getElementById('videoModalFrame');
+const modalTitle = document.getElementById('videoModalTitle');
 let modalReturnFocus = null;
 
 function openVideoModal(key) {
   modalReturnFocus = document.activeElement;
-  modalFrame.replaceChildren(createVideo(key));
+  modalTitle.dataset.i18n = `video.title.${key}`;
+  modalTitle.textContent = t(modalTitle.dataset.i18n);
+  const el = mountVideo(modalFrame, key);
   modal.hidden = false;
   document.body.classList.add('modal-open');
   modal.querySelector('.video-modal__close').focus();
+  // "▶ Ver demo" es el play: recién acá empieza la descarga.
+  if (el.tagName === 'VIDEO') el.play().catch(() => { /* queda la portada con controles */ });
 }
 
 function closeVideoModal() {
   if (modal.hidden) return;
   modal.hidden = true;
-  modalFrame.replaceChildren(); // corta la reproducción
+  modalFrame.replaceChildren(); // corta la reproducción y la descarga
   document.body.classList.remove('modal-open');
   if (modalReturnFocus) modalReturnFocus.focus();
 }
@@ -352,23 +405,26 @@ document.querySelectorAll('[data-video-modal]').forEach((btn) => {
 });
 modal.querySelectorAll('[data-close]').forEach((el) => el.addEventListener('click', closeVideoModal));
 document.addEventListener('keydown', (event) => {
+  if (modal.hidden) return;
   if (event.key === 'Escape') closeVideoModal();
-  // El foco queda dentro del modal: el único control es "Cerrar".
-  if (event.key === 'Tab' && !modal.hidden) {
+  // El foco queda dentro del modal: "Cerrar" y el video (si hay).
+  if (event.key === 'Tab') {
+    const focusables = [modal.querySelector('.video-modal__close'), modalFrame.querySelector('video')].filter(Boolean);
+    const i = focusables.indexOf(document.activeElement);
     event.preventDefault();
-    modal.querySelector('.video-modal__close').focus();
+    focusables[(i + (event.shiftKey ? -1 : 1) + focusables.length) % focusables.length].focus();
   }
 });
 
-/* Inline (founder, Layout Engine): se reproduce en el lugar del placeholder. */
-function playInline(container) {
-  if (container.dataset.playing === 'true') return;
-  container.dataset.playing = 'true';
-  container.replaceChildren(createVideo(container.dataset.videoInline));
-}
-
+/* Inline (founder, Layout Engine): con video, el reproductor queda puesto desde
+   el inicio (solo la portada); sin video, el botón muestra "Video próximamente". */
 document.querySelectorAll('[data-video-inline]').forEach((container) => {
-  container.querySelector('.video-play')?.addEventListener('click', () => playInline(container));
+  const key = container.dataset.videoInline;
+  if (VIDEOS[key]) {
+    mountVideo(container, key);
+  } else {
+    container.querySelector('.video-play')?.addEventListener('click', () => container.replaceChildren(createSoon()));
+  }
 });
 
 /* "Ver Layout Engine →": lleva al video del Layout Engine y lo reproduce. */
@@ -377,7 +433,9 @@ const layoutVideo = document.getElementById('layoutVideo');
 if (layoutCtaBtn && layoutVideo) {
   layoutCtaBtn.addEventListener('click', () => {
     layoutVideo.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    playInline(layoutVideo);
+    const video = layoutVideo.querySelector('video');
+    if (video) video.play().catch(() => { /* queda la portada con controles */ });
+    else layoutVideo.querySelector('.video-play')?.click();
     layoutVideo.classList.add('is-highlighted');
     setTimeout(() => layoutVideo.classList.remove('is-highlighted'), 900);
   });
