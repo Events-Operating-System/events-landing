@@ -4,6 +4,8 @@ Landing page de alto impacto para EventOS, el sistema operativo AI para producto
 
 **Deploy:** [events-operating-system.github.io/events-landing](https://events-operating-system.github.io/events-landing/)
 
+> Se publica en GitHub Pages con push a main; no usar Vercel.
+
 ## Stack
 
 - HTML5 + CSS3 + JavaScript vanilla
