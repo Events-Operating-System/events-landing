@@ -1,98 +1,26 @@
-# Claude Landing — Notas de construcción
+# CLAUDE.md — events-landing
 
-Documentación del proceso de construcción de la landing page de EventOS con Claude Code.
+Landing pública de EventOS (HTML/CSS/JS sin frameworks), con las páginas legales. Deploy: GitHub Pages, al hacer push
+a `main`.
 
-## Sesión de trabajo
+> **Reglas comunes de EventOS:** `eventos-reglas/REGLAS.md` (se cargan solas desde `~/Developer/CLAUDE.md`). Acá solo
+> lo propio de este repo y su estado actual. Bitácora (qué se hizo en cada sesión): `docs/SESSION_LOG.md` (hasta el
+> 2026-10-31 este archivo se llamaba `claude-landing.md`).
 
-**Proyecto:** EventOS Landing Page  
-**Repo:** events-operating-system/events-landing  
-**Deploy:** GitHub Pages  
-**Fecha:** Junio 2026  
-**Autor:** JBD — Reality Near  
-**Co-autor IA:** Claude Code (Anthropic, claude-sonnet-4-6)
+## Reglas propias del repo
+- Sin frameworks ni build para la página principal: `index.html` + `assets/css/landing.css` + `assets/js/main.js`.
+  `assets/css/style.css` lo usan las páginas legales.
+- Textos en ES/EN/PT: `data-i18n` (texto) y `data-i18n-html` (solo títulos con `<br>`) contra el objeto
+  `translations` de `main.js`. Toda clave nueva, en los tres idiomas.
+- **Legales:** se editan las fuentes `legal/src/{es,en,pt}/*.md` y se regenera con `node legal/build.mjs`. Versión
+  nueva: subir `VERSION`/`VERSION_DIR` en `build.mjs`, regenerar y cargarla en `legal_documents` con una migración
+  (repo de Administración). `legal/v1/` no se reescribe. El español es el original.
+- Sin Google Analytics (la Política de Cookies dice que no hay analítica).
+- Planes y precios = tabla `plans` de EventOS; si cambian allá, actualizar acá a mano. Sin "gratis".
+- Copyright de JBD Investment Corp Inc.
 
-## Lo que se construyó
-
-Rebuild completo desde cero de la landing page. Se reemplazó el `index.html` anterior y se creó la estructura `assets/css/`, `assets/js/`, `assets/images/`.
-
-### Decisiones de diseño
-
-- **Stack puro** — HTML/CSS/JS vanilla, sin frameworks. Requisito explícito para simplicidad de deploy en GitHub Pages.
-- **Mobile-first** — Nav hamburger, grids de 1 columna, hero sin cards en mobile.
-- **Colores** — Paleta azul corporativa: `#1D4ED8` (azul), `#1E3A8A` (oscuro), `#0A0F1E` (negro).
-- **Tipografía** — Inter vía Google Fonts, cargada en CSS con `@import`.
-- **Imágenes** — Referenciadas en `assets/images/`. Fallback `background: #0A0F1E` si no existen.
-
-### Sistema de traducciones
-
-Objeto `translations` en `main.js` con claves ES/EN. Todos los elementos del DOM tienen `data-i18n="key"`. El toggle actualiza `textContent` de cada elemento y el atributo `lang` del `<html>`.
-
-### Animaciones implementadas
-
-| Efecto | Mecanismo |
-|--------|-----------|
-| Hero slider | `setInterval` 5s + `opacity` transition 1.2s |
-| Nav shadow | `scroll` event + clase `.scrolled` |
-| Módulos fade-in | `IntersectionObserver` con delay escalonado |
-| Contadores | `requestAnimationFrame` + easing cúbico |
-| Hover cards | `translateY(-4px)` + `box-shadow` |
-| Galería zoom | `scale(1.04)` en `img` con `transition 0.4s` |
-
-### Galería — estructura final
-
-Grid de 3 columnas × 2 filas:
-- `.gallery-item.gallery-large` — columna 1, span 2 filas (imagen principal)
-- 4 × `.gallery-item` — columnas 2 y 3, filas 1 y 2
-
-### Commits de la sesión
-
-```
-feat: rebuild landing from scratch
-fix: update copy - problema, solucion, eyebrow sizes
-fix: remove personal photo and client names from gallery and layout section
-feat: add event photos and layout images to assets
-docs: add README and claude-landing notes
-```
-
-## Notas para próxima sesión
-
-- Hero slider usa `assets/images/hero-1/2/3.jpg` — las fotos están subidas.
-- Galería usa `evento-1.jpg` a `evento-5.jpg` — subidas.
-- Layout Engine usa `layout-plano.png` — subida.
-- Para agregar nuevas secciones, seguir el patrón `data-i18n` en HTML y agregar las claves en ambos idiomas en `main.js`.
-- El eyebrow class `.eyebrow` aplica a toda la página — cambios de tamaño son globales.
-
-## Documentos legales y planes (2026-09-29)
-
-- `legal/src/{es,en,pt}/*.md` → `node legal/build.mjs` → `legal/{es,en,pt}/*.html` (vigente),
-  `legal/v1/{es,en,pt}/*.html` (fija, el build no la reescribe) y `legal/manifest.json` (sha256 del
-  original en español, el mismo que guarda la base en `legal_documents`). El español es el original;
-  EN/PT son traducción V1 sujeta a revisión. Estilos al final de `style.css` (`.legal-*`).
-- Versión nueva: editar las fuentes, subir `VERSION`/`VERSION_DIR` en `build.mjs`, regenerar y cargar
-  la versión en `legal_documents` con una migración (repo de administración).
-- Footer: Términos / Privacidad / Cookies / Uso de IA con enlaces según idioma (`legalSlugs` en
-  `main.js`); copyright de JBD Investment Corp Inc.
-- Sin Google Analytics (la Política de Cookies v1.0 dice que no hay analítica).
-- Planes = tabla `plans` de EventOS (US$ 70/100/200 por mes, 700/1.000/2.000 por año, mismos límites).
-  Si cambian allá, actualizar acá a mano.
-
-## Rediseño (2026-10-02)
-
-- `index.html` + `assets/css/landing.css` + `assets/js/main.js` implementan `eventos_landing_demo.html`
-  (referencia visual; se sacó del repo al publicar). Se conservó lo anterior: `legal/` y `assets/css/style.css`
-  (lo usan las páginas legales), sin Google Analytics, planes en USD con su precio anual, sin "gratis",
-  copyright de JBD Investment Corp Inc.
-- i18n ES/EN/PT: `data-i18n` (texto) y `data-i18n-html` (solo títulos con `<br>`) contra
-  `translations` en `main.js`. Idioma inicial: el guardado (`localStorage`, opcional) o el del
-  navegador, si no español. El footer legal apunta a `legal/{idioma}/…`.
-- Enlaces: "Cliente" → `eventos-portal-cliente-frontend.vercel.app/login`; "Mi organización" →
-  Identity; "Crear mi organización" → `#planes`; "Elegir" →
-  `eventos-administracion-frontend.vercel.app/?plan=N` (preselección en "Crear tu organización", sin
-  Price IDs); LinkedIn del founder y de la empresa, Instagram y YouTube.
-- Videos: objeto `VIDEOS` al principio de `main.js` (nombre base de los archivos en `assets/videos/`).
-  Vacío = "Video próximamente". Hoy: `heroDemo` = demo, `productDemo` = dashboard, `founder` =
-  presentación de Javier, `layout` = Layout Engine. `heroDemo` y `productDemo` abren el modal compartido; `founder` y `layout` se
-  reproducen en su lugar; "Ver Layout Engine →" lleva al video del Layout Engine y lo reproduce.
-- Carrusel de eventos reales: copias reducidas en `assets/images/proof/` (las originales pesan
-  6–10 MB y quedan sin tocar).
-- Foto del founder: `assets/images/javier.jpg` (120×120; sin archivo se muestran las iniciales "JB").
+## Estado actual (2026-10-31)
+- Rediseño del 2026-10-02 publicado. Enlaces: "Cliente" → Portal `/login`; "Mi organización" → Identity; "Elegir" →
+  alta de Administración con `?plan=N`.
+- Videos en el objeto `VIDEOS` de `main.js` (vacío = "Video próximamente"); fotos reducidas de eventos reales en
+  `assets/images/proof/`.
